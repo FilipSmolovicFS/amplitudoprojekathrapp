@@ -41,7 +41,7 @@
                      Status
                  </th>
                  <th scope="col" class="px-6 py-3 font-medium">
-                     Salary
+                     Contracts
                  </th>
                  <th scope="col" class="px-6 py-3 font-medium">
                      Action
@@ -63,7 +63,11 @@
                          <x-status-chip status="{{$employee->status->name}}"/>
                      </td>
                      <td class="px-6 py-4">
-                         {{$employee->salary->current_amount}}
+                         @foreach($employee->contract as $contract)
+                             <span class="inline-flex items-center px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-lg border border-indigo-100">
+                            {{ $contract->contractType->name }}
+                        </span>
+                         @endforeach
                      </td>
                      <td class="px-6 py-4" x-data>
 {{--                         <a

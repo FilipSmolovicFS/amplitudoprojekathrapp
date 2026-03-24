@@ -9,14 +9,27 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.min.js"></script>
     @vite('resources/css/app.css')
 
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+{{--    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />--}}
 
+    <!-- Initialize theme from localStorage -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+
+        console.log(document.documentElement.classList.contains('dark'))
+
+    </script>
 
     <title>Document</title>
 
-</head>
-<body>
 
+
+</head>
+<body class="bg-[#fafafa] dark:bg-[#09090b]">
 
 <button  data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
     <span class="sr-only">Open sidebar</span>
@@ -26,20 +39,21 @@
 </button>
 
 <aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full px-4 py-6 overflow-y-auto bg-white border-r border-gray-100 flex flex-col">
+    <div class="h-full px-4 py-6 overflow-y-auto bg-[#fafafa] dark:bg-[#09090b] border-r  flex flex-col">
 
         <div class="flex items-center mb-10 px-2">
-            <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center mr-3 shadow-lg shadow-indigo-200">
-                <span class="text-white font-bold text-xl">EM</span>
-            </div>
-            <span class="text-xl font-bold tracking-tight text-slate-800">Employee Management</span>
+            <span class="text-xl font-bold tracking-tight text-blue-600 dark:text-white">Employee Management</span>
         </div>
 
         <ul class="space-y-1.5 font-medium flex-1">
             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 mb-2">General</p>
 
             <li>
-                <a href="{{route('dashboard.index')}}" class="flex items-center px-3 py-2.5 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-indigo-600 transition-all duration-200 group">
+                <a href="{{route('dashboard.index')}}"
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              {{ request()->routeIs('dashboard.index')
+                 ? 'bg-indigo-50 text-indigo-600 font-semibold'
+                 : 'text-heading hover:bg-slate-50 hover:text-indigo-600' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"/>
                         <rect x="14" y="3" width="7" height="7"/>
@@ -51,7 +65,11 @@
             </li>
 
             <li>
-                <a href="{{route('employee.index')}}" class="flex items-center px-3 py-2.5 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-indigo-600 transition-all duration-200 group">
+                <a href="{{route('employee.index')}}"
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              {{ request()->routeIs('employee.*')
+                 ? 'bg-indigo-50 text-indigo-600 font-semibold'
+                 : 'text-heading hover:bg-slate-50 hover:text-indigo-600' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -61,7 +79,11 @@
             </li>
 
             <li>
-                <a href="#" class="flex items-center px-3 py-2.5 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-indigo-600 transition-all group">
+                <a href=""
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              {{ request()->routeIs('contract.*')
+                 ? 'bg-indigo-50 text-indigo-600 font-semibold'
+                 : 'text-heading hover:bg-slate-50 hover:text-indigo-600' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="18" height="16" rx="2"/>
                         <circle cx="9" cy="10" r="2"/>
@@ -72,7 +94,11 @@
             </li>
 
             <li>
-                <a href="{{route('contract.index')}}" class="flex items-center px-3 py-2.5 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-indigo-600 transition-all group">
+                <a href="{{route('contract.index')}}"
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              {{ request()->routeIs('contract.*')
+                 ? 'bg-indigo-50 text-indigo-600 font-semibold'
+                 : 'text-heading hover:bg-slate-50 hover:text-indigo-600' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
                         <polyline points="14 2 14 8 20 8"/>
@@ -85,7 +111,11 @@
             </li>
 
             <li>
-                <a href="#" class="flex items-center px-3 py-2.5 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-indigo-600 transition-all group">
+                <a href=""
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              {{ request()->routeIs('contract.*')
+                 ? 'bg-indigo-50 text-indigo-600 font-semibold'
+                 : 'text-heading hover:bg-slate-50 hover:text-indigo-600' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                     </svg>
@@ -94,24 +124,64 @@
             </li>
         </ul>
 
+        <button id="theme-toggle" class="px-4 py-2 rounded bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 transition-colors">
+            Switch Theme
+        </button>
+
         <div class="pt-4 mt-4 border-t border-gray-50">
-            <a href="#" class="flex items-center px-3 py-2.5 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all group">
+            <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                @csrf
+            </form>
+            <button type="button" onclick="document.getElementById('logout-form').submit()" class="flex items-center w-full px-3 py-2.5 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all group">
                 <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                 <span class="ms-3">Logout</span>
-            </a>
+            </button>
         </div>
     </div>
 </aside>
 
-<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+
+
 
 <div class="mt-8 sm:ml-64">
     {{$slot}}
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        if (!themeToggleBtn) {
+            console.warn('Theme toggle button not found');
+            return;
+        }
+
+        themeToggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Toggle the 'dark' class on the html element
+            document.documentElement.classList.toggle('dark');
+
+            // Save to localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+
+            console.log('✓ Theme toggled', {
+                isDark: document.documentElement.classList.contains('dark'),
+                saved: localStorage.getItem('theme'),
+                htmlClass: document.documentElement.className
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
+
