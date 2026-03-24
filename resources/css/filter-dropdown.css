@@ -1,0 +1,7 @@
+.panel-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s cubic-bezier(0.4,0,0.2,1);
+}
+.panel-body.open { grid-template-rows: 1fr; }
+.panel-inner { overflow: hidden; }
