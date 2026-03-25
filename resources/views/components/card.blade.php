@@ -1,12 +1,12 @@
 @props(['title', 'count', 'route'])
 
 
-<div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
+<div class="bg-white dark:bg-[#18181b] block max-w-sm p-6 border border-default rounded-base shadow-xs">
 
     <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading">{{$title}}</h5>
 
     <p class="mb-3 text-body font-bold text-xl">{{$count}}</p>
-    <a href="{{$route}}" class="inline-flex font-medium items-center text-fg-brand hover:underline">
+    <a href="{{$route}}" class="inline-flex font-medium items-center text-[#e17100] hover:underline">
         More
         <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
              width="24" height="24" fill="none" viewBox="0 0 24 24">

@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.min.js"></script>
-    @vite('resources/css/app.css')
+    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
 
-{{--    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />--}}
+
 
     <!-- Initialize theme from localStorage -->
     <script>
@@ -49,11 +49,11 @@
             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 mb-2">General</p>
 
             <li>
-                <a href="{{route('dashboard.index')}}"
+                <a href="<?php echo e(route('dashboard.index')); ?>"
                    class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
-              {{ request()->routeIs('dashboard.index')
+              <?php echo e(request()->routeIs('dashboard.index')
                  ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] ' }}">
+                 : 'text-heading hover:bg-[#242427] '); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"/>
                         <rect x="14" y="3" width="7" height="7"/>
@@ -65,11 +65,11 @@
             </li>
 
             <li>
-                <a href="{{route('employee.index')}}"
+                <a href="<?php echo e(route('employee.index')); ?>"
                    class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
-              {{ request()->routeIs('employee.*')
+              <?php echo e(request()->routeIs('employee.*')
                  ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] ' }}">
+                 : 'text-heading hover:bg-[#242427] '); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -78,27 +78,14 @@
                 </a>
             </li>
 
-{{--            <li>
-                <a href=""
-                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
-              {{ request()->routeIs('#')
-                 ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] ' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="16" rx="2"/>
-                        <circle cx="9" cy="10" r="2"/>
-                        <path d="M15 8h2"/><path d="M15 12h2"/><path d="M7 16h4"/>
-                    </svg>
-                    <span class="flex-1 ms-3">Positions</span>
-                </a>
-            </li>--}}
+
 
             <li>
-                <a href="{{route('contract.index')}}"
+                <a href="<?php echo e(route('contract.index')); ?>"
                    class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
-              {{ request()->routeIs('contract.*')
+              <?php echo e(request()->routeIs('contract.*')
                  ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] ' }}">
+                 : 'text-heading hover:bg-[#242427] '); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
                         <polyline points="14 2 14 8 20 8"/>
@@ -110,18 +97,7 @@
                 </a>
             </li>
 
-{{--            <li>
-                <a href="#"
-                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
-              {{ request()->routeIs('#')
-                 ? 'bg-indigo-50 text-white font-semibold'
-                 : 'text-heading hover:bg-slate-50' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                    </svg>
-                    <span class="flex-1 ms-3">Status</span>
-                </a>
-            </li>--}}
+
         </ul>
 
         <button id="theme-toggle" class="px-4 py-2 rounded bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 transition-colors">
@@ -129,8 +105,8 @@
         </button>
 
         <div class="pt-4 mt-4 border-t border-gray-50">
-            <form method="POST" action="{{ route('logout') }}" id="logout-form">
-                @csrf
+            <form method="POST" action="<?php echo e(route('logout')); ?>" id="logout-form">
+                <?php echo csrf_field(); ?>
             </form>
             <button type="button" onclick="document.getElementById('logout-form').submit()" class="flex items-center w-full px-3 py-2.5 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all group">
                 <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
@@ -144,7 +120,8 @@
 
 
 <div class="mt-8 sm:ml-64">
-    {{$slot}}
+    <?php echo e($slot); ?>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
@@ -185,3 +162,4 @@
 </body>
 </html>
 
+<?php /**PATH C:\Users\fsmol\Herd\amplitudoprojekathrapp\resources\views/components/layout.blade.php ENDPATH**/ ?>

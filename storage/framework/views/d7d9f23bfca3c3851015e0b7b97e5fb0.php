@@ -1,4 +1,4 @@
-@vite('resources/css/filter-dropdown.css')
+<?php echo app('Illuminate\Foundation\Vite')('resources/css/filter-dropdown.css'); ?>
 
 
 <div class="w-full max-w-xs relative" id="dropdown-root">
@@ -35,31 +35,31 @@
              transition-all duration-300 ease-out
              opacity-0 -translate-y-2 pointer-events-none scale-[0.98]">
 
-            @foreach($filterData as $key => $categoryFilter)
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $filterData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $categoryFilter): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
                 <div class="border-b border-white/6">
-                    <button type="button" onclick="togglePanel('{{$key}}')" class="w-full flex items-center justify-between px-4 py-3 text-left transition-colors group">
+                    <button type="button" onclick="togglePanel('<?php echo e($key); ?>')" class="w-full flex items-center justify-between px-4 py-3 text-left transition-colors group">
                         <div class="flex items-center gap-2.5">
-                            <span class=" tracking-wide text-body dark:text-heading capitalize">{{$key}}</span>
+                            <span class=" tracking-wide text-body dark:text-heading capitalize"><?php echo e($key); ?></span>
                         </div>
-                        <svg id="chevron-{{$key}}" class="w-3 h-3 text-body dark:text-heading transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg id="chevron-<?php echo e($key); ?>" class="w-3 h-3 text-body dark:text-heading transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
 
-                    <div class="panel-body" id="panel-{{$key}}">
+                    <div class="panel-body" id="panel-<?php echo e($key); ?>">
                         <div class="panel-inner">
                             <div class="px-4 pb-3 pt-1 flex flex-col gap-2.5">
-                                @foreach($categoryFilter as $category_id => $category)
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $categoryFilter; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category_id => $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
                                     <label class="flex items-center gap-2.5 cursor-pointer group/l">
-                                        <input type="checkbox" name="{{$key}}[]" value="{{$category_id}}" class="accent-blue-500 w-3.5 h-3.5 cursor-pointer" onchange="updateCount()"/>
-                                        <span class="tracking-wide text-body dark:text-heading transition-colors">{{$category}}</span>
+                                        <input type="checkbox" name="<?php echo e($key); ?>[]" value="<?php echo e($category_id); ?>" class="accent-blue-500 w-3.5 h-3.5 cursor-pointer" onchange="updateCount()"/>
+                                        <span class="tracking-wide text-body dark:text-heading transition-colors"><?php echo e($category); ?></span>
                                     </label>
-                                @endforeach
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
 
 
             <!-- Footer -->
@@ -123,3 +123,4 @@
         }
     });
 </script>
+<?php /**PATH C:\Users\fsmol\Herd\amplitudoprojekathrapp\resources\views/components/filter-dropdown.blade.php ENDPATH**/ ?>
