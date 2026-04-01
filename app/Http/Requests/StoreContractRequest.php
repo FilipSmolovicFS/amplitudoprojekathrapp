@@ -23,7 +23,11 @@ class StoreContractRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'employee_id' => 'required|exists:employees,id',
+            'contract_type_id' => 'required|exists:contract_types,id',
+            'started_at' => 'required|date',
+            'ended_at' => 'required|date|after:started_at',
+            'contracts_document' => 'required|file|mimes:pdf|max:2048',
         ];
     }
 }

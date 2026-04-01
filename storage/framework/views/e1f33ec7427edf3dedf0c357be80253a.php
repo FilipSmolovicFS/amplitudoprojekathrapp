@@ -1,7 +1,7 @@
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['label', 'type' => 'text', 'name', 'colSpan', 'value' => '']));
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['label', 'type' => 'text', 'name', 'placeholder' => '', 'colSpan', 'value' => '']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -16,7 +16,7 @@ $attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
 unset($__propNames);
 unset($__newAttributes);
 
-foreach (array_filter((['label', 'type' => 'text', 'name', 'colSpan', 'value' => '']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+foreach (array_filter((['label', 'type' => 'text', 'name', 'placeholder' => '', 'colSpan', 'value' => '']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
 
@@ -28,21 +28,28 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
+<?php
+    $oldValue = old($name, $value);
+    $displayValue = is_array($oldValue) ? '' : $oldValue;
+?>
+
 <div class="<?php echo e($colSpan); ?>">
-    <label for="first-name" class="block text-sm/6 font-medium text-gray-900"><?php echo e($label); ?></label>
+    <label for="<?php echo e($name); ?>" class="block text-sm/6 font-medium text-body dark:text-white"><?php echo e($label); ?></label>
     <div class="mt-2">
-        <input type="<?php echo e($type); ?>" name="<?php echo e($name); ?>" value="<?php echo e($value); ?>"
+        <input
+            type="<?php echo e($type); ?>"
+            name="<?php echo e($name); ?>"
+            value="<?php echo e($displayValue); ?>"
+            placeholder="<?php echo e($placeholder); ?>"
+            id="<?php echo e($name); ?>"
 
-               <?php if($type === 'date'): ?>
-                   min="<?php echo e(\Carbon\Carbon::now()->format('Y-m-d')); ?>"
-               <?php endif; ?>
+            <?php echo e($attributes->except('label', 'type', 'name', 'colSpan', 'value')); ?>
 
-               <?php echo e($attributes->except('label', 'type', 'name', 'colSpan', 'value')); ?>
-
-               class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1
-               -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2
-               focus:outline-indigo-600 sm:text-sm/6" required
-
+            class="block w-full rounded-md bg-white dark:bg-[#18181b] px-3 py-1.5 text-base text-heading
+                  placeholder:text-gray-400 border border-gray-300 dark:border-[#3E3E3A]
+                  focus:outline-3 focus:-outline-offset-2 focus:outline-blue-600
+                  dark:focus:outline-[#e17100] sm:text-sm/6"
+            required
         />
     </div>
 </div>

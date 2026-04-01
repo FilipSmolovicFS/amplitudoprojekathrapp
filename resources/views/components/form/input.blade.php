@@ -1,19 +1,26 @@
-@props(['label', 'type' => 'text', 'name', 'colSpan', 'value' => ''])
+@props(['label', 'type' => 'text', 'name', 'placeholder' => '', 'colSpan', 'value' => ''])
+
+@php
+    $oldValue = old($name, $value);
+    $displayValue = is_array($oldValue) ? '' : $oldValue;
+@endphp
 
 <div class="{{$colSpan}}">
-    <label for="first-name" class="block text-sm/6 font-medium text-gray-900">{{$label}}</label>
+    <label for="{{$name}}" class="block text-sm/6 font-medium text-body dark:text-white">{{$label}}</label>
     <div class="mt-2">
-        <input type="{{$type}}" name="{{$name}}" value="{{$value}}"
+        <input
+            type="{{$type}}"
+            name="{{$name}}"
+            value="{{ $displayValue }}"
+            placeholder="{{$placeholder}}"
+            id="{{$name}}"
 
-               @if($type === 'date')
-                   min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-               @endif
-
-               {{ $attributes->except('label', 'type', 'name', 'colSpan', 'value') }}
-               class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1
-               -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2
-               focus:outline-indigo-600 sm:text-sm/6" required
-
+            {{ $attributes->except('label', 'type', 'name', 'colSpan', 'value') }}
+            class="block w-full rounded-md bg-white dark:bg-[#18181b] px-3 py-1.5 text-base text-heading
+                  placeholder:text-gray-400 border border-gray-300 dark:border-[#3E3E3A]
+                  focus:outline-3 focus:-outline-offset-2 focus:outline-blue-600
+                  dark:focus:outline-[#e17100] sm:text-sm/6"
+            required
         />
     </div>
 </div>

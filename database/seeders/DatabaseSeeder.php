@@ -21,12 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
            EmployeeStatusSeeder::class,
            ContractTypeSeeder::class,
-           PositionSeeder::class
-        ]);
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+           PositionSeeder::class,
+           UserSeeder::class
         ]);
     }
 }

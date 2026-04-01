@@ -7,7 +7,7 @@
     <button
         onclick="toggleDropdown()"
         id="trigger-btn"
-        class="w-full flex items-center justify-between px-4 py-3 rounded-lg bg-white/5 border border-[#3F3F46] hover:bg-white/8 transition-all group"
+        class="w-full flex items-center justify-between px-4 py-3 rounded-sm bg-white/5 border border-[#3F3F46] hover:bg-white/8 transition-all group"
     >
         <div class="flex items-center gap-2.5">
             <svg class="w-4 h-4 text-body" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -16,7 +16,7 @@
             <span class="text-body text-base transition-colors">Filters</span>
         </div>
         <div class="flex items-center gap-2">
-                <span id="count-badge" class="hidden text-2xs tracking-wide px-1.5 py-0.5 rounded  "></span>
+                <span id="count-badge" class="hidden text-2xs tracking-wide px-1.5 py-0.5 font-bold bg-[#e17100B3] text-black dark:text-white rounded-xs"></span>
             <svg
                 id="drop-chevron"
                 class="w-3.5 h-3.5 text-[#3F3F46] group-hover:text-[#e17100] transition-all duration-300"
@@ -29,9 +29,20 @@
 
     <!-- Dropdown -->
     <form action="">
+
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = request()->except(['status', 'position', 'contractTypes', 'expireContract']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(is_array($value)): ?>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
+                    <input type="hidden" name="<?php echo e($key); ?>[]" value="<?php echo e($v); ?>">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+            <?php else: ?>
+                <input type="hidden" name="<?php echo e($key); ?>" value="<?php echo e($value); ?>">
+            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+
         <div
             id="dropdown-menu"
-            class="absolute w-full mt-2 z-50 rounded-lg border border-white/10 bg-white dark:bg-[#18181b] shadow-2xl overflow-hidden
+            class="absolute w-full mt-2 z-50 rounded-sm border border-white/10 bg-white dark:bg-[#18181b] shadow-2xl overflow-hidden
              transition-all duration-300 ease-out
              opacity-0 -translate-y-2 pointer-events-none scale-[0.98]">
 
@@ -39,7 +50,10 @@
                 <div class="border-b border-white/6">
                     <button type="button" onclick="togglePanel('<?php echo e($key); ?>')" class="w-full flex items-center justify-between px-4 py-3 text-left transition-colors group">
                         <div class="flex items-center gap-2.5">
-                            <span class=" tracking-wide text-body dark:text-heading capitalize"><?php echo e($key); ?></span>
+                            <span class="tracking-wide text-body dark:text-heading">
+                                <?php echo e(Str::headline($key)); ?>
+
+                            </span>
                         </div>
                         <svg id="chevron-<?php echo e($key); ?>" class="w-3 h-3 text-body dark:text-heading transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -51,8 +65,18 @@
                             <div class="px-4 pb-3 pt-1 flex flex-col gap-2.5">
                                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $categoryFilter; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category_id => $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
                                     <label class="flex items-center gap-2.5 cursor-pointer group/l">
-                                        <input type="checkbox" name="<?php echo e($key); ?>[]" value="<?php echo e($category_id); ?>" class="accent-blue-500 w-3.5 h-3.5 cursor-pointer" onchange="updateCount()"/>
-                                        <span class="tracking-wide text-body dark:text-heading transition-colors"><?php echo e($category); ?></span>
+                                        <input
+                                            type="checkbox"
+                                            name="<?php echo e($key); ?>[]"
+                                            value="<?php echo e($category_id); ?>"
+                                            class="accent-blue-500 w-3.5 h-3.5 cursor-pointer"
+                                            onchange="updateCount()"
+                                        <?php if(in_array((string)$category_id, (array) request($key, []))): echo 'checked'; endif; ?>
+                                        />
+                                        <span class="tracking-wide text-body dark:text-heading transition-colors">
+                                            <?php echo e($key === 'expireContract' ? $category . ' days' : $category); ?>
+
+                                        </span>
                                     </label>
                                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                             </div>
@@ -105,15 +129,28 @@
     }
 
     function updateCount() {
-        const checked = document.querySelectorAll('input[type=checkbox]:checked').length;
+        const checked = document.querySelectorAll('#dropdown-root input[type=checkbox]:checked').length;
         const badge = document.getElementById('count-badge');
         badge.textContent = checked;
         badge.classList.toggle('hidden', checked === 0);
     }
 
+    updateCount()
+
     function clearAll() {
-        document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+        checkboxes.forEach(cb => cb.checked = false);
         updateCount();
+
+        const url = new URL(window.location.href);
+
+        const paramsToRemove = new Set(Array.from(checkboxes).map(cb => cb.name));
+
+        paramsToRemove.forEach(param => {
+            url.searchParams.delete(param);
+        });
+
+        window.location.href = url.toString();
     }
 
     document.addEventListener('click', (e) => {

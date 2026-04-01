@@ -1,7 +1,7 @@
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['id' => 'modal', 'title' => 'Modal', 'route', 'method']));
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['id' => 'modal', 'title' => 'Modal', 'route', 'method', 'hasFile' => false, 'open' => false]));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -16,7 +16,7 @@ $attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
 unset($__propNames);
 unset($__newAttributes);
 
-foreach (array_filter((['id' => 'modal', 'title' => 'Modal', 'route', 'method']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+foreach (array_filter((['id' => 'modal', 'title' => 'Modal', 'route', 'method', 'hasFile' => false, 'open' => false]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
 
@@ -28,9 +28,9 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
-<div x-data="{ open: false }" x-on:open-modal.window="if($event.detail === '<?php echo e($id); ?>') open = true">
+<div x-data="{ open: <?php echo e($open ? 'true' : 'false'); ?>, fileError: '' }"
+     x-on:open-modal.window="if($event.detail === '<?php echo e($id); ?>') open = true">
 
-    
     <div
         x-show="open"
         x-transition.opacity
@@ -38,16 +38,18 @@ unset($__defined_vars, $__key, $__value); ?>
         style="display: none"
         class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50">
 
-        
         <div
             x-on:click.stop
             x-transition
-            class="relative bg-white rounded-lg shadow-sm w-full max-w-md mx-4">
+            class="relative bg-white dark:bg-[#09090b] rounded-lg shadow-sm w-full max-w-md mx-4">
 
-            <form action="<?php echo e($route); ?>" method="<?php echo e($method); ?>">
+            <form action="<?php echo e($route); ?>" method="POST" <?php if($hasFile): ?> enctype="multipart/form-data" <?php endif; ?>>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(strtoupper($method) !== 'POST' ): ?>
+                    <?php echo method_field(strtoupper($method)); ?>
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 <?php echo csrf_field(); ?>
-                <div class="flex items-center justify-between p-5 border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900"><?php echo e($title); ?></h3>
+                <div class="flex items-center justify-between p-5 border-b border-[#3F3F46]">
+                    <h3 class="text-lg font-semibold text-heading"><?php echo e($title); ?></h3>
                     <button type="button" x-on:click="open = false"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center">
                         <svg class="w-3 h-3" fill="none" viewBox="0 0 14 14">
@@ -59,15 +61,16 @@ unset($__defined_vars, $__key, $__value); ?>
                 <div class="p-5 space-y-4">
                     <?php echo e($slot); ?>
 
+
                 </div>
 
-                <div class="flex items-center justify-end gap-3 p-5 border-t border-gray-200">
-                    <button type="button" x-on:click="open = false"
-                            class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-100 outline-none">
+                <div class="flex items-center justify-end gap-3 p-5 border-t border-[#3F3F46]">
+                    <a type="button" x-on:click="open = false"
+                            class="py-2.5 px-5 text-sm font-medium text-heading hover:bg-gray-200 dark:hover:bg-white/10 cursor-pointer rounded-sm">
                         Cancel
-                    </button>
+                    </a>
                     <button type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 outline-none">
+                            class="text-white dark:text-black bg-blue-600 dark:bg-[#e17100] font-medium rounded-sm text-sm px-5 py-2.5 outline-none">
                         Save Changes
                     </button>
                 </div>

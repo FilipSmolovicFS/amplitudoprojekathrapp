@@ -2,17 +2,12 @@
 
 namespace App\Service;
 
-use App\Models\Contract;
 use App\Models\ContractType;
 use App\Models\Employee;
 use App\Models\EmployeeStatus;
 use App\Models\Position;
-use App\Models\Salary;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
-use PHPUnit\Logging\OpenTestReporting\Status;
-use function Pest\Laravel\post;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class EmployeeService
 {
@@ -21,15 +16,15 @@ class EmployeeService
     {
 
 
-        $query = Employee::query()->with(['status', 'contract', 'position']);
+        $query = Employee::query()->with(['status', 'contract', 'contract.document', 'position']);
 
         $query->when($request['statuses'] ?? null, function($query, $status){
             return $query->whereIn('employees.status_id', (array) $status);
         });
 
-        $query->when($request['contract'] ?? null, function($query, $contract) use ($request) {
-            return $query->whereHas('contract', function($q) use ($request) {
-                $q->whereIn('contract_type_id', (array) $request['contractTypes']);
+        $query->when($request['contractTypes'] ?? null, function($query, $contractTypes) {
+            return $query->whereHas('contract', function($q) use ($contractTypes) {
+                $q->whereIn('contract_type_id', (array) $contractTypes);
             });
         });
 
@@ -52,8 +47,8 @@ class EmployeeService
             2 => 90,
         ];
 
-        $query->when(isset($request['expire']) && isset($daysMap[$request['expire'][0] ?? null]), function ($query) use ($request, $daysMap) {
-            $days = $daysMap[$request['expire'][0]];
+        $query->when(isset($request['expireContract']) && isset($daysMap[$request['expireContract'][0] ?? null]), function ($query) use ($request, $daysMap) {
+            $days = $daysMap[$request['expireContract'][0]];
 
             $query->whereHas('contract', function ($q) use ($days) {
                 $q->where('ended_at', '>', now())
@@ -61,7 +56,9 @@ class EmployeeService
             });
         });
 
-        return $query->get();
+        $perPage = empty($request['per_page']) ? 10 : $request['per_page'];
+
+        return $query->paginate($perPage);
     }
 
 
@@ -82,30 +79,57 @@ class EmployeeService
 
     }
 
-    public function createNewEmployee(array $newEmployeeData)
+    public function createNewEmployee(array $newEmployeeData): bool
     {
+        return DB::transaction(function () use ($newEmployeeData) {
+            try {
+                $newEmployee = Employee::query()->create([
+                    'first_name' => $newEmployeeData['first_name'],
+                    'last_name' => $newEmployeeData['last_name'],
+                    'email' => $newEmployeeData['email'],
+                    'started_at' => $newEmployeeData['contracts'][0]['started_at'],
+                    'status_id' => $newEmployeeData['status'],
+                    'position_id' => $newEmployeeData['position'],
+                    'phone_number' => $newEmployeeData['phone_number'],
+                    'date_of_birth' => $newEmployeeData['date_of_birth'],
+                    'jmbg' => $newEmployeeData['jmbg'],
+                    'address' => $newEmployeeData['address'],
+                    'gender' => $newEmployeeData['gender'] === 1 ? 'Male' : 'Female'
+                ]);
 
-        $newEmployee = Employee::query()->create([
-            'first_name' => $newEmployeeData['first_name'],
-            'last_name' => $newEmployeeData['last_name'],
-            'email' => $newEmployeeData['email'],
-            'started_at' => $newEmployeeData['contracts'][0]['started_at'],
-            'status_id' => $newEmployeeData['status'],
-            'position_id' => $newEmployeeData['position'],
+                $newEmployee->salary()->create([
+                    'current_amount' => $newEmployeeData['salary']
+                ]);
 
-        ]);
+                foreach ($newEmployeeData['contracts'] as $contractData) {
+                    $contract = $newEmployee->contract()->create([
+                        'contract_type_id' => $contractData['contract_type_id'],
+                        'started_at' => $contractData['started_at'],
+                        'ended_at' => $contractData['ended_at']
+                    ]);
 
-        $newEmployee->salary()->create([
-            'current_amount' => $newEmployeeData['salary']
-        ]);
+                    if (isset($contractData['document']) && $contractData['document']->isValid()) {
+                        $file = $contractData['document'];
+                        $originalName = $file->getClientOriginalName();
+                        $fileName = time() . '_' . $originalName;
 
-        foreach ($newEmployeeData['contracts'] as $contractType) {
-            $newEmployee->contract()->create([
-                'contract_type_id' => $contractType['contract_type_id'],
-                'started_at' => $contractType['started_at'],
-                'ended_at' => $contractType['ended_at']
-            ]);
-        }
+                        $path = $file->storeAs('contract-type', $fileName, 'public');
+
+                        $contract->document()->create([
+                            'file_path' => $path,
+                            'file_name' => $originalName,
+                        ]);
+                    }
+                }
+
+                return true;
+
+            } catch (\Exception $e) {
+                Log::error('Employee Creation Failed: ' . $e->getMessage());
+
+                return false;
+            }
+        });
     }
 
     public function getStatusesAndPositionsAndContractTypes()
@@ -114,53 +138,64 @@ class EmployeeService
             'statuses' => EmployeeStatus::all()->pluck('name', 'id')->toArray(),
             'positions' => Position::all()->pluck('name', 'id')->toArray(),
             'contractTypes' => ContractType::all()->pluck('name', 'id')->toArray(),
-            'expire' => [15,30,90]
+            'expireContract' => [15,30,90]
         ];
     }
 
     public function updateEmployee(array $updateUserData, Employee $employee)
     {
+        return DB::transaction(function() use ($updateUserData, $employee)
+        {
+            try {
+                $newSalary = $updateUserData['salary'];
+                $currentSalary = $employee->salary->current_amount;
 
-        $newSalary = $updateUserData['salary'];
-        $currentSalary = $employee->salary->current_amount;
+                $employee->update([
+                    'first_name' => $updateUserData['first_name'],
+                    'last_name' => $updateUserData['last_name'],
+                    'email' => $updateUserData['email'],
+                    'position_id' => $updateUserData['position'],
+                    'status_id' => $updateUserData['status']
+                ]);
 
-        $employee->update([
-            'first_name' => $updateUserData['first_name'],
-            'last_name' => $updateUserData['last_name'],
-            'email' => $updateUserData['email'],
-            'position_id' => $updateUserData['position'],
-            'status_id' => $updateUserData['status']
-        ]);
+                if ($newSalary != $currentSalary) {
 
-        if ($newSalary != $currentSalary) {
+                    $salaryData = ['current_amount' => $newSalary];
 
-            $salaryData = ['current_amount' => $newSalary];
+                    if ($newSalary > $currentSalary) {
+                        $salaryData['last_raise'] = now();
+                    }
 
-            if ($newSalary > $currentSalary) {
-                $salaryData['last_raise'] = now();
+                    $employee->salary()->update($salaryData);
+
+                    $employee->salary->salaryHistory()->create([
+                        'amount' => $newSalary,
+                    ]);
+                }
+
+                return true;
+
+            }catch (\Exception $e) {
+                Log::error('Employee Creation Failed: ' . $e->getMessage());
+
+                return false;
             }
-
-            $employee->salary()->update($salaryData);
-
-            $employee->salary->salaryHistory()->create([
-                'amount' => $newSalary,
-            ]);
-        }
-
-
-
-        foreach ($updateUserData['contracts'] as $contractId => $contractData) {
-            $employee->contract()->where('id', $contractId)->update([
-                'contract_type_id' => $contractData['contract_type_id'],
-                'started_at' => $contractData['started_at'],
-                'ended_at' => $contractData['ended_at'],
-            ]);
-        }
+        });
     }
 
     public function getSalaryHistory(Employee $employee)
     {
-        return $employee->salary->salaryHistory;
+        return $employee->salary->salaryHistory()->paginate(5);
+    }
+
+    public function deleteEmployee(Employee $employee): bool
+    {
+        try {
+            return (bool) $employee->delete();
+        } catch (\Exception $e) {
+            Log::error("Failed to delete employee {$employee->id}: " . $e->getMessage());
+            return false;
+        }
     }
 
 }

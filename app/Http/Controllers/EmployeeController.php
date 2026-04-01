@@ -51,9 +51,13 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        $this->employeeService->createNewEmployee($request->validated());
 
-        return redirect()->route('employee.index');
+        if (!$this->employeeService->createNewEmployee($request->validated()))
+        {
+            return redirect()->back()->with('error', 'Failed to create employee.');
+        }
+
+        return redirect()->route('employee.index')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -61,9 +65,10 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
+        $statusesAndPositionsAndContractTypes = $this->employeeService->getStatusesAndPositionsAndContractTypes();
         $salaryHistory = $this->employeeService->getSalaryHistory($employee);
 
-        return view('employee.show', compact('employee', 'salaryHistory'));
+        return view('employee.show', compact('employee', 'salaryHistory', 'statusesAndPositionsAndContractTypes'));
     }
 
     /**
@@ -81,9 +86,11 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-       $this->employeeService->updateEmployee($request->validated(), $employee);
+        if (!$this->employeeService->updateEmployee($request->validated(), $employee)){
+            return redirect()->back()->with('error', 'Failed to update employee.');
+        }
 
-       return redirect()->back();
+        return redirect()->route('employee.index')->with('success', 'Employee updated successfully.');
     }
 
     /**
@@ -91,8 +98,10 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        $employee->delete();
+        if (!$this->employeeService->deleteEmployee($employee)){
+            return redirect()->back()->with('error', 'Failed to delete employee.');
+        }
 
-        return redirect()->route('employee.index');
+        return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
     }
 }

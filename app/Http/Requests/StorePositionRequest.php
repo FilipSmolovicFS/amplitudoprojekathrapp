@@ -12,7 +12,7 @@ class StorePositionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class StorePositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'position' => 'required|string|max:255|unique:positions,name',
         ];
     }
 }

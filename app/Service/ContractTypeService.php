@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Models\Contract;
 use App\Models\ContractType;
 
-class ContractTypeService
+class   ContractTypeService
 {
     public function getContractType()
     {
@@ -14,13 +14,18 @@ class ContractTypeService
 
     public function createContractType(array $request)
     {
-        ContractType::query()->create([
+        return ContractType::query()->create([
             'name' => $request['contractType']
         ]);
     }
 
-    public function deleteContractType(Contract $contract)
+    public function deleteContractType(ContractType $contractType)
     {
+        if($contractType->contract()->exists()) {
+            return false;
+        }
+
         $contractType->delete();
+        return true;
     }
 }

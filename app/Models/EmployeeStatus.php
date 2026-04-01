@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class EmployeeStatus extends Model
 {
+    protected $fillable = [
+        'name',
+    ];
+
     public function employee(): HasMany
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class, 'status_id');
     }
 }

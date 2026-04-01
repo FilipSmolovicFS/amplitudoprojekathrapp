@@ -12,7 +12,7 @@ return new class extends Migration
      */
 
     /*
-     * can't add value unless it's in the table & cant be deleted unless children aka contracts are deleted
+     * can't add value unless it's in the table & cant be deleted unless children aka contract-type are deleted
      */
     public function up(): void
     {

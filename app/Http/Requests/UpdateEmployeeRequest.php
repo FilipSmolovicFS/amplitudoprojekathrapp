@@ -29,9 +29,9 @@ class UpdateEmployeeRequest extends FormRequest
             'position' => 'required',
             'status' => 'required',
             'salary' => 'required|decimal:0,2',
-            'contracts.*.contract_type_id' => 'required|exists:contract_types,id',
-            'contracts.*.started_at' => 'required|date',
-            'contracts.*.ended_at' => 'nullable|date|after:contracts.*.start_date',
+            'contract-type.*.contract_type_id' => 'required|exists:contract_types,id',
+            'contract-type.*.started_at' => 'required|date',
+            'contract-type.*.ended_at' => 'nullable|date|after:contract-type.*.start_date',
         ];
     }
 }

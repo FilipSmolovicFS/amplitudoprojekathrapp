@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreContractTypeRequest extends FormRequest
 {
@@ -23,7 +24,10 @@ class StoreContractTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'contractType' => 'required|unique:contract_types,name'
+            'contractType' => [
+                'required',
+                Rule::unique('contract_types', 'name')->whereNull('deleted_at'),
+            ],
         ];
     }
 }

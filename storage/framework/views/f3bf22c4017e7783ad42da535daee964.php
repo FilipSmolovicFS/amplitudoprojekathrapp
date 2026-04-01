@@ -14,13 +14,14 @@
     <!-- Initialize theme from localStorage -->
     <script>
         (function() {
-            const theme = localStorage.getItem('theme');
-            if (theme === 'dark') {
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
                 document.documentElement.classList.add('dark');
             }
         })();
-
-        console.log(document.documentElement.classList.contains('dark'))
 
     </script>
 
@@ -50,10 +51,10 @@
 
             <li>
                 <a href="<?php echo e(route('dashboard.index')); ?>"
-                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+                   class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group
               <?php echo e(request()->routeIs('dashboard.index')
-                 ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] '); ?>">
+                 ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
+                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10'); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"/>
                         <rect x="14" y="3" width="7" height="7"/>
@@ -66,10 +67,10 @@
 
             <li>
                 <a href="<?php echo e(route('employee.index')); ?>"
-                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+                   class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group
               <?php echo e(request()->routeIs('employee.*')
-                 ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] '); ?>">
+                 ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
+                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10'); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -78,14 +79,27 @@
                 </a>
             </li>
 
-
+            <li>
+                <a href="<?php echo e(route('position.index')); ?>"
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              <?php echo e(request()->routeIs('position.*')
+                 ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
+                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10'); ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="16" rx="2"/>
+                        <circle cx="9" cy="10" r="2"/>
+                        <path d="M15 8h2"/><path d="M15 12h2"/><path d="M7 16h4"/>
+                    </svg>
+                    <span class="flex-1 ms-3">Positions</span>
+                </a>
+            </li>
 
             <li>
-                <a href="<?php echo e(route('contract.index')); ?>"
-                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
-              <?php echo e(request()->routeIs('contract.*')
-                 ? 'bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-[#242427] '); ?>">
+                <a href="<?php echo e(route('contract-type.index')); ?>"
+                   class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group
+              <?php echo e(request()->routeIs('contract-type.*')
+                 ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
+                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10'); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
                         <polyline points="14 2 14 8 20 8"/>
@@ -93,14 +107,25 @@
                         <line x1="16" y1="17" x2="8" y2="17"/>
                         <line x1="10" y1="9" x2="8" y2="9"/>
                     </svg>
-                    <span class="flex-1 ms-3">Contract</span>
+                    <span class="flex-1 ms-3">Contract Types</span>
                 </a>
             </li>
 
-
+            <li>
+                <a href="<?php echo e(route('status.index')); ?>"
+                   class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
+              <?php echo e(request()->routeIs('status.*')
+                 ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
+                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10'); ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                    <span class="flex-1 ms-3">Status</span>
+                </a>
+            </li>
         </ul>
 
-        <button id="theme-toggle" class="px-4 py-2 rounded bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 transition-colors">
+        <button id="theme-toggle" class="px-4 py-2 rounded-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 transition-colors">
             Switch Theme
         </button>
 

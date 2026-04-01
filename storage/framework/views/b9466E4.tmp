@@ -1,0 +1,385 @@
+<?php if (isset($component)) { $__componentOriginal23a33f287873b564aaf305a1526eada4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal23a33f287873b564aaf305a1526eada4 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.layout','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+
+    <div class="mx-auto max-w-6xl">
+        <form method="POST" action="<?php echo e(route('employee.update', $employee->id)); ?>">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('PATCH'); ?>
+            <div class="space-y-12">
+                <div class="border-b border-gray-900/10 pb-12">
+                    <h2 class="font-semibold text-heading text-2xl">Edit Employee Information</h2>
+
+
+                    <div class="mt-10 grid grid-cols-6 gap-x-6 gap-y-8">
+                        <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'First Name','type' => 'text','name' => 'first_name','value' => ''.e($employee->first_name).'','colSpan' => 'sm:col-span-3'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $attributes = $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Last Name','type' => 'text','name' => 'last_name','value' => ''.e($employee->last_name).'','colSpan' => 'sm:col-span-3'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $attributes = $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Email','type' => 'email','name' => 'email','value' => ''.e($employee->email).'','colSpan' => 'col-span-3'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $attributes = $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe = $attributes; } ?>
+<?php $component = App\View\Components\Form\Dropdown::resolve(['title' => 'Status','name' => 'status','value' => ''.e($employee->status->id).'','options' => $statusesAndPositionsAndContractTypes['statuses']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.dropdown'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Dropdown::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe)): ?>
+<?php $attributes = $__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe; ?>
+<?php unset($__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe)): ?>
+<?php $component = $__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe; ?>
+<?php unset($__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe); ?>
+<?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe = $attributes; } ?>
+<?php $component = App\View\Components\Form\Dropdown::resolve(['title' => 'Position','name' => 'position','value' => ''.e($employee->position->id).'','options' => $statusesAndPositionsAndContractTypes['positions']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.dropdown'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Dropdown::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe)): ?>
+<?php $attributes = $__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe; ?>
+<?php unset($__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe)): ?>
+<?php $component = $__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe; ?>
+<?php unset($__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe); ?>
+<?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Salary','type' => 'number','name' => 'salary','value' => ''.e($employee->salary->current_amount).'','colSpan' => 'sm:col-span-3'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $attributes = $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+
+                        <div class="sm:col-span-3"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-end gap-x-6">
+                <a href="<?php echo e(route('employee.index')); ?>" class="text-sm/6 font-semibold text-heading">Cancel</a>
+
+                <button
+                    type="submit"
+                    class="rounded-md bg-blue-600 dark:bg-[#e17100] px-3 py-2 cursor-pointer text-sm font-semibold
+                    text-white dark:text-black shadow-xs hover:bg-indigo-500 focus-visible:outline-2
+                    focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >Save
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+    <div
+        class="mx-auto max-w-6xl my-8 overflow-visible bg-white dark:bg-[#18181b] shadow-xs rounded-md border border-default">
+
+        <div class="p-4 flex items-center justify-between space-x-4">
+
+                    <span
+                        x-data
+                        x-on:click="$dispatch('open-modal', 'add-contract-modal')"
+                        class="px-2 py-2 dark:bg-[#e17100] bg-blue-600 dark:text-black font-semibold text-white rounded-sm cursor-pointer"
+                    >
+                        Add new contract
+                    </span>
+
+        </div>
+
+        <table
+            class="w-full bg-white border-[#3F3F46] dark:bg-[#18181b]  text-sm text-left rtl:text-right text-heading">
+            <thead class="text-sm text-heading bg-white dark:bg-[#242427] border-b border-t border-[#3F3F46]">
+                <tr>
+                    <th scope="col" class="px-6 py-3 font-medium">
+                        Contract Type
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
+                        File
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
+                        Started At
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
+                        Ended At
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
+                        Action
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <?php if (isset($component)) { $__componentOriginalb1cba78f36bb787c775e1be4f72d07ea = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea = $attributes; } ?>
+<?php $component = App\View\Components\ContractTableRow::resolve(['employee' => $employee,'statusesAndPositionsAndContractTypes' => $statusesAndPositionsAndContractTypes] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('contract-table-row'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\ContractTableRow::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Delete']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea)): ?>
+<?php $attributes = $__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea; ?>
+<?php unset($__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalb1cba78f36bb787c775e1be4f72d07ea)): ?>
+<?php $component = $__componentOriginalb1cba78f36bb787c775e1be4f72d07ea; ?>
+<?php unset($__componentOriginalb1cba78f36bb787c775e1be4f72d07ea); ?>
+<?php endif; ?>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <?php if (isset($component)) { $__componentOriginal8c9069a376d468665d9f4eee9640e8b7 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal8c9069a376d468665d9f4eee9640e8b7 = $attributes; } ?>
+<?php $component = App\View\Components\EditModal::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('edit-modal'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\EditModal::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['id' => 'add-contract-modal','route' => ''.e(route('contract.store')).'','method' => 'POST','hasFile' => true]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+
+        <input type="hidden" value="<?php echo e($employee->id); ?>" name="employee_id"/>
+
+        <?php if (isset($component)) { $__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe = $attributes; } ?>
+<?php $component = App\View\Components\Form\Dropdown::resolve(['title' => 'Contract type','name' => 'contract_type_id','options' => $statusesAndPositionsAndContractTypes['contractTypes']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.dropdown'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Dropdown::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe)): ?>
+<?php $attributes = $__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe; ?>
+<?php unset($__attributesOriginal2601ab0d5d31d3fae6ed0d222682b9fe); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe)): ?>
+<?php $component = $__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe; ?>
+<?php unset($__componentOriginal2601ab0d5d31d3fae6ed0d222682b9fe); ?>
+<?php endif; ?>
+        <div class="col-span-full sm:col-span-3"></div>
+
+        <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Starting at:','type' => 'date','name' => 'started_at','colSpan' => 'col-span-full sm:col-span-3'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $attributes = $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+
+        <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Ending at:','type' => 'date','name' => 'ended_at','colSpan' => 'col-span-full sm:col-span-3'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Form\Input::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $attributes = $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96)): ?>
+<?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
+<?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
+<?php endif; ?>
+
+        <input type="file"
+               name="contracts_document"
+               accept="application/pdf"
+               @change="
+                    fileError = '';
+                    const file = $event.target.files[0];
+
+                    if (file) {
+                        if (file.type !== 'application/pdf') {
+                            fileError = 'Only PDF files are allowed';
+                            $event.target.value = '';
+                        }
+
+                        else if (file.size > 2 * 1024 * 1024) {
+                            fileError = 'File must not exceed 2MB';
+                            $event.target.value = '';
+                        }
+                    }
+                "
+               class="file:bg-blue-600 dark:file:bg-[#e17100] file:text-white text-white dark:file:text-black rounded-sm col-span-full">
+
+        <p x-show="fileError"
+           x-text="fileError"
+           class="text-sm text-red-500">
+        </p>
+
+     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal8c9069a376d468665d9f4eee9640e8b7)): ?>
+<?php $attributes = $__attributesOriginal8c9069a376d468665d9f4eee9640e8b7; ?>
+<?php unset($__attributesOriginal8c9069a376d468665d9f4eee9640e8b7); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8c9069a376d468665d9f4eee9640e8b7)): ?>
+<?php $component = $__componentOriginal8c9069a376d468665d9f4eee9640e8b7; ?>
+<?php unset($__componentOriginal8c9069a376d468665d9f4eee9640e8b7); ?>
+<?php endif; ?>
+
+
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal23a33f287873b564aaf305a1526eada4)): ?>
+<?php $attributes = $__attributesOriginal23a33f287873b564aaf305a1526eada4; ?>
+<?php unset($__attributesOriginal23a33f287873b564aaf305a1526eada4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal23a33f287873b564aaf305a1526eada4)): ?>
+<?php $component = $__componentOriginal23a33f287873b564aaf305a1526eada4; ?>
+<?php unset($__componentOriginal23a33f287873b564aaf305a1526eada4); ?>
+<?php endif; ?>
+<?php /**PATH C:\Users\fsmol\Herd\amplitudoprojekathrapp\resources\views/employee/edit.blade.php ENDPATH**/ ?>

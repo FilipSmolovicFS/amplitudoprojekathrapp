@@ -7,7 +7,7 @@
     <button
         onclick="toggleDropdown()"
         id="trigger-btn"
-        class="w-full flex items-center justify-between px-4 py-3 rounded-lg bg-white/5 border border-[#3F3F46] hover:bg-white/8 transition-all group"
+        class="w-full flex items-center justify-between px-4 py-3 rounded-sm bg-white/5 border border-[#3F3F46] hover:bg-white/8 transition-all group"
     >
         <div class="flex items-center gap-2.5">
             <svg class="w-4 h-4 text-body" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -16,7 +16,7 @@
             <span class="text-body text-base transition-colors">Filters</span>
         </div>
         <div class="flex items-center gap-2">
-                <span id="count-badge" class="hidden text-2xs tracking-wide px-1.5 py-0.5 rounded  "></span>
+                <span id="count-badge" class="hidden text-2xs tracking-wide px-1.5 py-0.5 font-bold bg-[#e17100B3] text-black dark:text-white rounded-xs"></span>
             <svg
                 id="drop-chevron"
                 class="w-3.5 h-3.5 text-[#3F3F46] group-hover:text-[#e17100] transition-all duration-300"
@@ -29,9 +29,20 @@
 
     <!-- Dropdown -->
     <form action="">
+
+        @foreach(request()->except(['status', 'position', 'contractTypes', 'expireContract']) as $key => $value)
+            @if(is_array($value))
+                @foreach($value as $v)
+                    <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                @endforeach
+            @else
+                <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+            @endif
+        @endforeach
+
         <div
             id="dropdown-menu"
-            class="absolute w-full mt-2 z-50 rounded-lg border border-white/10 bg-white dark:bg-[#18181b] shadow-2xl overflow-hidden
+            class="absolute w-full mt-2 z-50 rounded-sm border border-white/10 bg-white dark:bg-[#18181b] shadow-2xl overflow-hidden
              transition-all duration-300 ease-out
              opacity-0 -translate-y-2 pointer-events-none scale-[0.98]">
 
@@ -39,7 +50,9 @@
                 <div class="border-b border-white/6">
                     <button type="button" onclick="togglePanel('{{$key}}')" class="w-full flex items-center justify-between px-4 py-3 text-left transition-colors group">
                         <div class="flex items-center gap-2.5">
-                            <span class=" tracking-wide text-body dark:text-heading capitalize">{{$key}}</span>
+                            <span class="tracking-wide text-body dark:text-heading">
+                                {{ Str::headline($key) }}
+                            </span>
                         </div>
                         <svg id="chevron-{{$key}}" class="w-3 h-3 text-body dark:text-heading transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -51,8 +64,17 @@
                             <div class="px-4 pb-3 pt-1 flex flex-col gap-2.5">
                                 @foreach($categoryFilter as $category_id => $category)
                                     <label class="flex items-center gap-2.5 cursor-pointer group/l">
-                                        <input type="checkbox" name="{{$key}}[]" value="{{$category_id}}" class="accent-blue-500 w-3.5 h-3.5 cursor-pointer" onchange="updateCount()"/>
-                                        <span class="tracking-wide text-body dark:text-heading transition-colors">{{$category}}</span>
+                                        <input
+                                            type="checkbox"
+                                            name="{{$key}}[]"
+                                            value="{{$category_id}}"
+                                            class="accent-blue-500 w-3.5 h-3.5 cursor-pointer"
+                                            onchange="updateCount()"
+                                        @checked(in_array((string)$category_id, (array) request($key, [])))
+                                        />
+                                        <span class="tracking-wide text-body dark:text-heading transition-colors">
+                                            {{ $key === 'expireContract' ? $category . ' days' : $category }}
+                                        </span>
                                     </label>
                                 @endforeach
                             </div>
@@ -105,15 +127,28 @@
     }
 
     function updateCount() {
-        const checked = document.querySelectorAll('input[type=checkbox]:checked').length;
+        const checked = document.querySelectorAll('#dropdown-root input[type=checkbox]:checked').length;
         const badge = document.getElementById('count-badge');
         badge.textContent = checked;
         badge.classList.toggle('hidden', checked === 0);
     }
 
+    updateCount()
+
     function clearAll() {
-        document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+        checkboxes.forEach(cb => cb.checked = false);
         updateCount();
+
+        const url = new URL(window.location.href);
+
+        const paramsToRemove = new Set(Array.from(checkboxes).map(cb => cb.name));
+
+        paramsToRemove.forEach(param => {
+            url.searchParams.delete(param);
+        });
+
+        window.location.href = url.toString();
     }
 
     document.addEventListener('click', (e) => {

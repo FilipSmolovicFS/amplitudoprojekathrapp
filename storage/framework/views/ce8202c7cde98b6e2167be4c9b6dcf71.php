@@ -11,23 +11,12 @@
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
 
-    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(count($errors) > 0): ?>
-        <div class="alert alert-danger">
-            <ul>
-                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
-                    <li><?php echo e($error); ?></li>
-                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
-            </ul>
-        </div>
-    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-
-
-
-
         <div x-data class="mx-auto max-w-6xl py-12">
             <span
                 x-on:click="$dispatch('open-modal', 'add-contract-modal')"
-                class="inline-flex items-center justify-center w-40 py-3 cursor-pointer bg-indigo-500 text-white text-sm font-medium rounded-lg shadow-md transition hover:bg-indigo-600 hover:scale-105 active:scale-95">
+                class="inline-flex items-center justify-center w-40 py-3 cursor-pointer bg-indigo-500
+                dark:bg-[#e17100] text-white dark:text-black text-sm font-medium rounded-sm
+                transition hover:bg-indigo-600">
                 Add new contract type
             </span>
         </div>
@@ -41,13 +30,13 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\App\View\Components\EditModal::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['id' => 'add-contract-modal','route' => ''.e(route('contract.store')).'','method' => 'POST']); ?>
+<?php $component->withAttributes(['id' => 'add-contract-modal','route' => ''.e(route('contract-type.store')).'','method' => 'POST','open' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->has('contractType'))]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
 
             <?php if (isset($component)) { $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc1d2405c7f8100d77292f2d0299ccd96 = $attributes; } ?>
-<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Contract Type','type' => 'text','name' => 'contractType'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Form\Input::resolve(['label' => 'Contract Type','type' => 'text','name' => 'contractType','value' => ''.e(old('contractType')).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('form.input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -67,6 +56,16 @@
 <?php $component = $__componentOriginalc1d2405c7f8100d77292f2d0299ccd96; ?>
 <?php unset($__componentOriginalc1d2405c7f8100d77292f2d0299ccd96); ?>
 <?php endif; ?>
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['contractType'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <p class="mt-1 text-sm text-red-500"><?php echo e($message); ?></p>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -79,11 +78,11 @@
 <?php unset($__componentOriginal8c9069a376d468665d9f4eee9640e8b7); ?>
 <?php endif; ?>
 
-        <div class="mx-auto max-w-6xl overflow-visible bg-neutral-primary-soft shadow-xs rounded-md border border-default">
+        <div class="mx-auto max-w-6xl overflow-visible bg-white dark:bg-[#18181b] rounded-sm border border-default mb-8">
+            <table class="w-full  border-[#3F3F46]  text-sm text-left rtl:text-right text-heading">
 
-            <table class="w-full text-sm text-left rtl:text-right text-body">
-                <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-t border-default-medium">
-                <tr>
+                <thead class="text-sm text-heading">
+                <tr class="border-b border-gray-200 dark:border-[#3E3E3A]">
                     <th scope="col" class="px-6 py-3 font-medium">
                         Name
                     </th>
@@ -95,16 +94,16 @@
                 <tbody>
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $contractType; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
 
-                    <tr class="bg-neutral-primary-soft border-b border-default hover:bg-neutral-secondary-medium">
+                    <tr class="border-b border-default hover:bg-neutral-secondary-medium rounded-sm">
 
-                        <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                        <td scope="row" class="px-6 py-4 rounded-sm font-medium text-heading whitespace-nowrap">
                             <?php echo e($type->name); ?>
 
-                        </th>
-                        <td class="px-6 py-4 text-red-600">
+                        </td>
+                        <td class="px-6 py-4 text-red-600 rounded-sm">
                             <?php if (isset($component)) { $__componentOriginale6a555649da86b3de44465cdfe004aa4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginale6a555649da86b3de44465cdfe004aa4 = $attributes; } ?>
-<?php $component = App\View\Components\Modal::resolve(['title' => 'Delete Contract Type','name' => ''.e($type->name).'','id' => ''.e($type->id).'','route' => ''.e(route('contract.destroy', $type->id)).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = App\View\Components\Modal::resolve(['title' => 'Delete Contract Type','name' => ''.e($type->name).'','id' => ''.e($type->id).'','route' => ''.e(route('contract-type.destroy', $type->id)).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('modal'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

@@ -1,0 +1,213 @@
+<?php if (isset($component)) { $__componentOriginal23a33f287873b564aaf305a1526eada4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal23a33f287873b564aaf305a1526eada4 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.layout','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+
+    <div class="max-w-6xl mb-8 m-auto">
+        <div class="bg-white dark:bg-[#18181b] rounded-sm border border-gray-200 dark:border-[#3E3E3A] overflow-hidden">
+
+            <div class="px-8 py-6 border-b border-gray-100 dark:border-[#3E3E3A]">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-heading leading-tight">
+                            <?php echo e($employee->first_name); ?> <?php echo e($employee->last_name); ?>
+
+                        </h1>
+                        <p class="text-sm text-heading font-medium"><?php echo e($employee->email); ?></p>
+                    </div>
+
+                    <div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 dark:bg-[#e17100] text-white dark:text-black ">
+                        <?php echo e($employee->status->name); ?>
+
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-8 py-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-heading uppercase tracking-widest">Current Position</label>
+                    <div class="flex items-center text-body mt-4">
+                        <span class="font-semibold"><?php echo e($employee->position->name); ?></span>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-heading uppercase tracking-widest">Current Salary</label>
+                    <div class="flex items-center text-body mt-4">
+                        <span class="font-semibold"><?php echo e($employee->salary->current_amount); ?></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-6xl mb-8">
+
+        <h1 class="text-2xl font-bold text-heading leading-tight mb-6">
+            Salary History
+        </h1>
+
+        <div class="rounded-sm bg-white dark:bg-[#18181b] shadow-xs border border-default dark:border-[#3E3E3A]">
+            <table class="w-full border-spacing-0 bg-white dark:bg-[#18181b] text-sm text-left rtl:text-right text-heading rounded-sm">
+                <thead class="text-sm text-heading">
+                <tr class="border-b border-gray-200 dark:border-[#3E3E3A]">
+                    <th scope="col" class="px-6 py-4">Amount</th>
+                    <th scope="col" class="px-6 py-4">Change date</th>
+                </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-200 dark:border-[#3E3E3A]">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $salaryHistory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $salary): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
+
+                    <tr class=" hover:bg-gray-100 dark:hover:bg-[#242427]">
+                        <td class="px-6 py-4">
+                            <?php echo e($salary->amount); ?>
+
+                        </td>
+                        <td class="px-6 py-4">
+                            <?php echo e($salary->created_at->format('m/d/Y')); ?>
+
+                        </td>
+                    </tr>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginala692982018c601dcf1a80a692b475639 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala692982018c601dcf1a80a692b475639 = $attributes; } ?>
+<?php $component = App\View\Components\EmptyStateTableBody::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('empty-state-table-body'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\EmptyStateTableBody::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'No salary history','colspan' => '2']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala692982018c601dcf1a80a692b475639)): ?>
+<?php $attributes = $__attributesOriginala692982018c601dcf1a80a692b475639; ?>
+<?php unset($__attributesOriginala692982018c601dcf1a80a692b475639); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala692982018c601dcf1a80a692b475639)): ?>
+<?php $component = $__componentOriginala692982018c601dcf1a80a692b475639; ?>
+<?php unset($__componentOriginala692982018c601dcf1a80a692b475639); ?>
+<?php endif; ?>
+
+
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+
+                </tbody>
+
+
+            </table>
+
+            <div class="px-2 py-4">
+                <?php echo e($salaryHistory->links()); ?>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mx-auto max-w-6xl rounded-sm mb-8">
+
+        <h1 class="text-2xl font-bold text-heading leading-tight mb-6">
+            Contracts
+        </h1>
+
+        <div class="rounded-sm bg-white dark:bg-[#18181b] shadow-xs border border-default dark:border-[#3E3E3A]">
+            <table class="w-full border-spacing-0 bg-white dark:bg-[#18181b] text-sm text-left rtl:text-right text-heading rounded-sm">
+                <tr class="border-b border-gray-200 dark:border-[#3E3E3A]">
+
+                <th scope="col" class="px-6 py-4">Contract Type</th>
+                    <th scope="col" class="px-6 py-4">Contract File</th>
+                    <th scope="col" class="px-6 py-4">Started At</th>
+                    <th scope="col" class="px-6 py-4">Ended At</th>
+                    <th scope="col" class="px-6 py-4">Action</th>
+                </tr>
+                </thead>
+
+                <tbody class="border-t-default">
+                <?php if (isset($component)) { $__componentOriginalb1cba78f36bb787c775e1be4f72d07ea = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea = $attributes; } ?>
+<?php $component = App\View\Components\ContractTableRow::resolve(['employee' => $employee,'statusesAndPositionsAndContractTypes' => $statusesAndPositionsAndContractTypes] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('contract-table-row'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\ContractTableRow::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Delete']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea)): ?>
+<?php $attributes = $__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea; ?>
+<?php unset($__attributesOriginalb1cba78f36bb787c775e1be4f72d07ea); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalb1cba78f36bb787c775e1be4f72d07ea)): ?>
+<?php $component = $__componentOriginalb1cba78f36bb787c775e1be4f72d07ea; ?>
+<?php unset($__componentOriginalb1cba78f36bb787c775e1be4f72d07ea); ?>
+<?php endif; ?>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-6xl flex justify-end mb-8">
+
+        <a href="<?php echo e(route('employee.edit', $employee->id)); ?>" class="text-black dark:text-[#e17100] rounded-sm px-4 py-2 mr-8 hover:bg-gray-200">Edit</a>
+
+        <?php if (isset($component)) { $__componentOriginale6a555649da86b3de44465cdfe004aa4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale6a555649da86b3de44465cdfe004aa4 = $attributes; } ?>
+<?php $component = App\View\Components\Modal::resolve(['title' => 'Delete Employee','name' => ''.e($employee->first_name).' '.e($employee->last_name).'','id' => ''.e($employee->id).'','route' => ''.e(route('employee.destroy', $employee->id)).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('modal'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Modal::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'bg-blue-600 dark:bg-red-600 text-white font-medium cursor-pointer  px-4 py-2 rounded-sm']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale6a555649da86b3de44465cdfe004aa4)): ?>
+<?php $attributes = $__attributesOriginale6a555649da86b3de44465cdfe004aa4; ?>
+<?php unset($__attributesOriginale6a555649da86b3de44465cdfe004aa4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale6a555649da86b3de44465cdfe004aa4)): ?>
+<?php $component = $__componentOriginale6a555649da86b3de44465cdfe004aa4; ?>
+<?php unset($__componentOriginale6a555649da86b3de44465cdfe004aa4); ?>
+<?php endif; ?>
+    </div>
+
+    <div class="mx-auto max-w-6xl flex justify-end mb-8">
+
+    </div>
+
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal23a33f287873b564aaf305a1526eada4)): ?>
+<?php $attributes = $__attributesOriginal23a33f287873b564aaf305a1526eada4; ?>
+<?php unset($__attributesOriginal23a33f287873b564aaf305a1526eada4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal23a33f287873b564aaf305a1526eada4)): ?>
+<?php $component = $__componentOriginal23a33f287873b564aaf305a1526eada4; ?>
+<?php unset($__componentOriginal23a33f287873b564aaf305a1526eada4); ?>
+<?php endif; ?>
+<?php /**PATH C:\Users\fsmol\Herd\amplitudoprojekathrapp\resources\views/employee/show.blade.php ENDPATH**/ ?>

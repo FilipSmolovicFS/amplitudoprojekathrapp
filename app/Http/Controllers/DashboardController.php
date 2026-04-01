@@ -27,7 +27,11 @@ class DashboardController extends Controller
                 'employeeCount' => $employee_count['employeeCount'],
                 'activeCount' => $employee_count['activeCount'],
                 'onLeaveCount' => $employee_count['onLeaveCount'],
-                'expiringContractsCount' => $employee_count['expiringContractsCount']
+                'terminatedCount' => $employee_count['terminatedCount'],
+                'expiringContractsCount' => $employee_count['expiringContractsCount'],
+                'activeStatus' => $employee_count['activeStatus'],
+                'positionNames' => $employee_count['positionNames'],
+                'positionCounts' => $employee_count['positionCounts'],
             ]);
     }
 

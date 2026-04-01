@@ -17,7 +17,12 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->foreignId('status_id');
-            $table->foreignId('position_id');
+            $table->foreignId('position_id')->constrained()->restrictOnDelete();;
+            $table->date('date_of_birth');
+            $table->string('phone_number');
+            $table->string('address');
+            $table->string('JMBG');
+            $table->string('gender');
             $table->date('started_at');
             $table->timestamps();
         });

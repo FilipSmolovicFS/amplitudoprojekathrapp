@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 
 class Employee extends Model
@@ -23,7 +24,12 @@ class Employee extends Model
         'contract_type',
         'ended_at',
         'contract_type_id',
-        'last_raise'
+        'last_raise',
+        'date_of_birth',
+        'phone_number',
+        'jmbg',
+        'address',
+        'gender'
     ];
 
     public function status(): BelongsTo
@@ -46,6 +52,11 @@ class Employee extends Model
         return $this->hasOne(Salary::class);
     }
 
+    public function document(): MorphMany
+    {
+        return $this->morphMany(Documents::class, 'documentable');
+    }
+
     #[Scope]
     protected function active(Builder $query): void
     {
@@ -59,6 +70,14 @@ class Employee extends Model
     {
         $query->whereHas('status', function($query){
             $query->where('id', 2);
+        });
+    }
+
+    #[Scope]
+    protected function terminated(Builder $query): void
+    {
+        $query->whereHas('status', function($query){
+            $query->where('id', 3);
         });
     }
 }

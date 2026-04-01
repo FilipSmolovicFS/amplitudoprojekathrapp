@@ -12,7 +12,7 @@ class UpdateContractRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,10 @@ class UpdateContractRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'contract_type_id' => 'required|exists:contract_types,id',
+            'started_at' => 'required|date',
+            'ended_at' => 'required|date|after:started_at',
+            'contract-document'=> 'nullable|file|mimes:pdf|max:2048',
         ];
     }
 }

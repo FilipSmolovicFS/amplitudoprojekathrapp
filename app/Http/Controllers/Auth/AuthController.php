@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -20,16 +22,25 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
+        $user = User::where('email', $credentials['email'])->first();
 
-        if (Auth::attempt($credentials, $request->remember)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+        if (!$user) {
+            return back()->withErrors([
+                'email' => "Account doesn't exist.",
+            ])->onlyInput('email');
         }
 
-        return back()->withErrors([
-            'email' => 'Podaci se ne poklapaju sa našom evidencijom.',
-        ])->onlyInput('email');
+        if (!Hash::check($credentials['password'], $user->password)) {
+            return back()->withErrors([
+                'password' => "Incorrect password.",
+            ])->onlyInput('email');
+        }
+
+        Auth::login($user, $request->remember);
+
+        $request->session()->regenerate();
+
+        return redirect()->intended('dashboard');
     }
 
     public function logout(Request $request)

@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\EmployeeStatus;
 use App\Http\Requests\StoreEmployeeStatusRequest;
 use App\Http\Requests\UpdateEmployeeStatusRequest;
+use App\Service\EmployeeStatusService;
 
 class EmployeeStatusController extends Controller
 {
+    protected $employeeStatusService;
+
+    public function __construct(EmployeeStatusService $employeeStatusService)
+    {
+        $this->employeeStatusService = $employeeStatusService;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $employeeStatuses = $this->employeeStatusService->index();
+        return view('status.index', compact('employeeStatuses'));
     }
 
     /**
@@ -29,7 +37,12 @@ class EmployeeStatusController extends Controller
      */
     public function store(StoreEmployeeStatusRequest $request)
     {
-        //
+        if(!$this->employeeStatusService->createNewStatus($request->validated()))
+        {
+            return redirect()->back()->with('error', 'Failed to create employee status.');
+        }
+
+        return redirect()->back()->with('success', 'Employee status created successfully.');
     }
 
     /**
@@ -61,6 +74,10 @@ class EmployeeStatusController extends Controller
      */
     public function destroy(EmployeeStatus $status)
     {
-        //
+        if (!$this->employeeStatusService->deleteStatus($status)) {
+            return redirect()->back()->with('error', 'Failed to delete status. It may be associated with existing employee.');
+        }
+
+        return redirect()->back()->with('success', 'Employee status deleted successfully.');
     }
 }

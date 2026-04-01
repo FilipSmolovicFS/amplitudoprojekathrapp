@@ -25,7 +25,7 @@ class ContractTypeController extends Controller
     {
         $contractType = $this->contractTypeService->getContractType();
 
-        return view('contracts.index', compact('contractType'));
+        return view('contract-type.index', compact('contractType'));
     }
 
     /**
@@ -41,9 +41,12 @@ class ContractTypeController extends Controller
      */
     public function store(StoreContractTypeRequest $request)
     {
-        $this->contractTypeService->createContractType($request->validated());
+        if (!$this->contractTypeService->createContractType($request->validated()))
+        {
+            return redirect()->back()->with('error', 'Failed to create contract type.');
+        }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Contract type created successfully.');
     }
 
     /**
@@ -75,6 +78,12 @@ class ContractTypeController extends Controller
      */
     public function destroy(ContractType $contractType)
     {
-        $this->contractTypeService->deleteContractType($contractType);
+        if (!$this->contractTypeService->deleteContractType($contractType))
+        {
+            return redirect()->back()->with('error', 'Failed to delete contract type. It may be associated with existing contracts.');
+        }
+
+        return redirect()->back()->with('success', 'Contract type deleted successfully.');
+
     }
 }

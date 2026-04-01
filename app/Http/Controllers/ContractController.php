@@ -6,6 +6,7 @@ use App\Models\Contract;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
 use App\Service\ContractService;
+use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
@@ -37,7 +38,9 @@ class ContractController extends Controller
      */
     public function store(StoreContractRequest $request)
     {
-        //
+        $this->contractService->createNewContract($request->validated());
+
+        return redirect()->back();
     }
 
     /**
@@ -61,7 +64,9 @@ class ContractController extends Controller
      */
     public function update(UpdateContractRequest $request, Contract $contract)
     {
-        //
+        $this->contractService->updateEmployeeContract($request->validated(), $contract);
+
+        return redirect()->back();
     }
 
     /**
@@ -69,6 +74,13 @@ class ContractController extends Controller
      */
     public function destroy(Contract $contract)
     {
-        //
+        $this->contractService->deleteContract($contract);
+
+        return redirect()->back();
+    }
+
+    public function download($documentId)
+    {
+        return $this->contractService->download($documentId);
     }
 }

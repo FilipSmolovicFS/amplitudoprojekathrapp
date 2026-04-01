@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Position;
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Requests\UpdatePositionRequest;
+use App\Service\PositionService;
 
 class PositionController extends Controller
 {
+    protected $positionService;
+
+    public function __construct(PositionService $positionService)
+    {
+        $this->positionService = $positionService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $positions = $this->positionService->index();
+
+        return view('position.index', compact('positions'));
     }
 
     /**
@@ -29,7 +39,12 @@ class PositionController extends Controller
      */
     public function store(StorePositionRequest $request)
     {
-        //
+        if (!$this->positionService->createNewPosition($request->validated()))
+        {
+            return redirect()->back()->with('error', 'Failed to create position.');
+        }
+
+        return redirect()->back()->with('success', 'Position created successfully.');
     }
 
     /**
@@ -61,6 +76,10 @@ class PositionController extends Controller
      */
     public function destroy(Position $position)
     {
-        //
+        if (!$this->positionService->deletePosition($position)) {
+            return redirect()->back()->with('error', 'Cannot delete position while employees are assigned to it.');
+        }
+
+        return redirect()->back()->with('success', 'Position deleted successfully.');
     }
 }
