@@ -155,7 +155,13 @@ class EmployeeService
                     'last_name' => $updateUserData['last_name'],
                     'email' => $updateUserData['email'],
                     'position_id' => $updateUserData['position'],
-                    'status_id' => $updateUserData['status']
+                    'status_id' => $updateUserData['status'],
+                    'phone_number' => $updateUserData['phone_number'],
+                    'date_of_birth' => $updateUserData['date_of_birth'],
+                    'address' => $updateUserData['address'],
+                    'JMBG' => $updateUserData['jmbg'],
+                    'gender' => $updateUserData['gender'],
+
                 ]);
 
                 if ($newSalary != $currentSalary) {

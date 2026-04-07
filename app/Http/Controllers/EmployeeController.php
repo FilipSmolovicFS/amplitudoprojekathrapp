@@ -51,7 +51,6 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-
         if (!$this->employeeService->createNewEmployee($request->validated()))
         {
             return redirect()->back()->with('error', 'Failed to create employee.');
