@@ -11,7 +11,7 @@
             name="{{ $name }}"
             required
             {{ $attributes->merge([
-                'class' => 'col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-[#18181b] py-1.5 pr-8 pl-3 text-base text-heading outline-1 outline-[#3F3F46] focus:outline-3 focus:-outline-offset-2 dark:focus:outline-[#e17100] sm:text-sm/6'
+                'class' => 'col-start-1 row-start-1 w-full appearance-none rounded-md bg-white dark:bg-[#18181b] py-1.5 pr-8 pl-3 text-base text-black dark:text-white outline-1 outline-[#3F3F46] focus:outline-3 focus:-outline-offset-2 dark:focus:outline-[#e17100] sm:text-sm/6'
             ]) }}
         >
 

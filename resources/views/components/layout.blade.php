@@ -32,7 +32,7 @@
 </head>
 <body class="bg-[#fafafa] dark:bg-[#09090b]">
 
-<button  data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
+<button  data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="text-black dark:text-white bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
@@ -54,7 +54,7 @@
                    class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group
               {{ request()->routeIs('dashboard.index')
                  ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
+                 : 'text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"/>
                         <rect x="14" y="3" width="7" height="7"/>
@@ -70,7 +70,7 @@
                    class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group
               {{ request()->routeIs('employee.*')
                  ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
+                 : 'text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -84,7 +84,7 @@
                    class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
               {{ request()->routeIs('position.*')
                  ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
+                 : 'text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="18" height="16" rx="2"/>
                         <circle cx="9" cy="10" r="2"/>
@@ -99,7 +99,7 @@
                    class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group
               {{ request()->routeIs('contract-type.*')
                  ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
+                 : 'text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-400/10' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
                         <polyline points="14 2 14 8 20 8"/>
@@ -116,7 +116,7 @@
                    class="flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group
               {{ request()->routeIs('status.*')
                  ? 'bg-blue-600 dark:bg-[#242427] text-white font-semibold'
-                 : 'text-heading hover:bg-gray-200 dark:hover:bg-gray-400/10'}}">
+                 : 'text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-400/10'}}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                     </svg>
