@@ -114,7 +114,7 @@
 
             <table class="w-full text-sm text-heading">
                 <thead>
-                <tr class="border-b border-default">
+                <tr class="border-b border-default text-left">
                     <th class="px-6 py-4">Amount</th>
                     <th class="px-6 py-4">Change date</th>
                 </tr>
@@ -122,7 +122,7 @@
 
                 <tbody class="divide-y divide-default">
                 @forelse($salaryHistory as $salary)
-                    <tr class="hover:bg-gray-100 dark:hover:bg-[#242427] text-center">
+                    <tr class="hover:bg-gray-100 dark:hover:bg-[#242427] text-left">
                         <td class="px-6 py-4 font-semibold">
                             {{ $salary->amount }}
                         </td>

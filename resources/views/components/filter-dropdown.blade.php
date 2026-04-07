@@ -30,7 +30,11 @@
     <!-- Dropdown -->
     <form action="">
 
-        @foreach(request()->except(['status', 'position', 'contractTypes', 'expireContract']) as $key => $value)
+        @php
+            $filterKeys = array_keys($filterData);
+        @endphp
+
+        @foreach(request()->except($filterKeys) as $key => $value)
             @if(is_array($value))
                 @foreach($value as $v)
                     <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">

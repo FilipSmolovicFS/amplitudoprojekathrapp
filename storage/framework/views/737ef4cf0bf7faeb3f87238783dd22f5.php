@@ -136,7 +136,7 @@
 
             <table class="w-full text-sm text-heading">
                 <thead>
-                <tr class="border-b border-default">
+                <tr class="border-b border-default text-left">
                     <th class="px-6 py-4">Amount</th>
                     <th class="px-6 py-4">Change date</th>
                 </tr>
@@ -144,7 +144,7 @@
 
                 <tbody class="divide-y divide-default">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $salaryHistory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $salary): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
-                    <tr class="hover:bg-gray-100 dark:hover:bg-[#242427] text-center">
+                    <tr class="hover:bg-gray-100 dark:hover:bg-[#242427] text-left">
                         <td class="px-6 py-4 font-semibold">
                             <?php echo e($salary->amount); ?>
 
