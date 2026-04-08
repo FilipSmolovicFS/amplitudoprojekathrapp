@@ -47,12 +47,25 @@ class EmployeeService
             2 => 90,
         ];
 
-        $query->when(isset($request['expireContract']) && isset($daysMap[$request['expireContract'][0] ?? null]), function ($query) use ($request, $daysMap) {
-            $days = $daysMap[$request['expireContract'][0]];
+        $query->when(!empty($request['expireContract']) && is_array($request['expireContract']), function ($query) use ($request, $daysMap) {
 
-            $query->whereHas('contract', function ($q) use ($days) {
+            $selectedDays = [];
+
+            foreach ($request['expireContract'] as $key) {
+                if (isset($daysMap[$key])) {
+                    $selectedDays[] = $daysMap[$key];
+                }
+            }
+
+            if (empty($selectedDays)) {
+                return;
+            }
+
+            $maxDays = max($selectedDays);
+
+            $query->whereHas('contract', function ($q) use ($maxDays) {
                 $q->where('ended_at', '>', now())
-                  ->where('ended_at', '<=', now()->addDays($days));
+                    ->where('ended_at', '<=', now()->addDays($maxDays));
             });
         });
 
