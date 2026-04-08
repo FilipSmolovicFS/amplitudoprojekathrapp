@@ -11,6 +11,52 @@
 <?php $component->withAttributes([]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
+
+    <?php if (isset($component)) { $__componentOriginal49115d54aa597d93edb47e0b269dd843 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal49115d54aa597d93edb47e0b269dd843 = $attributes; } ?>
+<?php $component = App\View\Components\Toast::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('toast'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Toast::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'success','message' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('success'))]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal49115d54aa597d93edb47e0b269dd843)): ?>
+<?php $attributes = $__attributesOriginal49115d54aa597d93edb47e0b269dd843; ?>
+<?php unset($__attributesOriginal49115d54aa597d93edb47e0b269dd843); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal49115d54aa597d93edb47e0b269dd843)): ?>
+<?php $component = $__componentOriginal49115d54aa597d93edb47e0b269dd843; ?>
+<?php unset($__componentOriginal49115d54aa597d93edb47e0b269dd843); ?>
+<?php endif; ?>
+    <?php if (isset($component)) { $__componentOriginal49115d54aa597d93edb47e0b269dd843 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal49115d54aa597d93edb47e0b269dd843 = $attributes; } ?>
+<?php $component = App\View\Components\Toast::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('toast'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Toast::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'error','message' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('error'))]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal49115d54aa597d93edb47e0b269dd843)): ?>
+<?php $attributes = $__attributesOriginal49115d54aa597d93edb47e0b269dd843; ?>
+<?php unset($__attributesOriginal49115d54aa597d93edb47e0b269dd843); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal49115d54aa597d93edb47e0b269dd843)): ?>
+<?php $component = $__componentOriginal49115d54aa597d93edb47e0b269dd843; ?>
+<?php unset($__componentOriginal49115d54aa597d93edb47e0b269dd843); ?>
+<?php endif; ?>
+
     <div class="mx-auto max-w-5xl py-12 px-4 sm:px-6 lg:px-8">
 
         <div class="mb-8 flex items-center justify-between">

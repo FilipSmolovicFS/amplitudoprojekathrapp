@@ -1,5 +1,9 @@
 @php use Carbon\Carbon; @endphp
 <x-layout>
+
+    <x-toast type="success" :message="session('success')" />
+    <x-toast type="error" :message="session('error')" />
+
     <div class="mx-auto max-w-5xl py-12 px-4 sm:px-6 lg:px-8">
 
         <div class="mb-8 flex items-center justify-between">
