@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthService
 {
-    public function login(array $credentials, bool $remember = false): void
+    public function login(array $credentials): void
     {
         $user = User::where('email', $credentials['email'])->first();
 
@@ -25,7 +25,7 @@ class AuthService
             ]);
         }
 
-        Auth::login($user, $remember);
+        Auth::login($user);
     }
 
     public function logout(): void

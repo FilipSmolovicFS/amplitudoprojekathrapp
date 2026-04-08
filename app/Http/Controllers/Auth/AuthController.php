@@ -29,7 +29,6 @@ class AuthController extends Controller
 
         $this->authService->login(
             $credentials,
-            $request->boolean('remember')
         );
 
         $request->session()->regenerate();
