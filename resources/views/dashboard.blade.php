@@ -1,5 +1,5 @@
 <x-layout>
-    @vite('resources/css/app.css')
+{{--    @vite('resources/css/app.css')--}}
 
     <div class="mx-auto max-w-6xl px-4 py-12">
 

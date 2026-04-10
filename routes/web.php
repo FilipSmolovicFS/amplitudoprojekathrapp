@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeStatusController;
 use App\Http\Controllers\PositionController;
 use App\Models\EmployeeStatus;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -21,7 +22,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
-        return redirect()->route('dashboard.index');
+        return Inertia::render('auth/Login');
     });
 
     Route::resource('/dashboard', DashboardController::class);
