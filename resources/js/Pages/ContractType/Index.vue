@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import type {ContractType} from "@/types/models.ts";
 import DeleteModal from "@/Components/DeleteModal.vue";
 import contractRoutes from '@/routes/contract-type'
 import {ref} from "vue";
 import FormModal from "@/Components/FormModal.vue";
 import {useForm} from "@inertiajs/vue3";
 import Input from "@/Components/Input.vue";
+import type {ContractType} from "@/types/contract/contract-type.ts";
 
 defineOptions({
     layout: AppLayout

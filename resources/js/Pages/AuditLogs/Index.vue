@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import type {Paginator} from "@/types/models.ts";
 import Pagination from "@/Components/Pagination.vue";
+import type {Paginator} from "@/types/common/paginator.ts";
 
 defineOptions({
     layout:AppLayout

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import type {Contract, Employee, ReferenceData} from "@/types/models.ts";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {type InertiaForm, Link, useForm} from "@inertiajs/vue3";
 import UserInformationFormContainer from "@/Components/UserInformationFormContainer.vue";
@@ -14,6 +13,8 @@ import DeleteModal from "@/Components/DeleteModal.vue";
 import {ref} from "vue";
 import type {RouteDefinition} from "@/wayfinder";
 import FormModal from "@/Components/FormModal.vue";
+import type {ReferenceData} from "@/types/common/reference-data.ts";
+import type {Employee} from "@/types/employee/employee.ts";
 
 defineOptions({
     layout: AppLayout

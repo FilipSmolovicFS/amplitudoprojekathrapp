@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import type {ContractType, Position, Role, Status, User} from "@/types/models.ts";
 import DeleteModal from "@/Components/DeleteModal.vue";
 import userRoutes from '@/routes/user'
 import {ref} from "vue";
@@ -9,7 +8,8 @@ import FormModal from "@/Components/FormModal.vue";
 import {useForm} from "@inertiajs/vue3";
 import Input from "@/Components/Input.vue";
 import FormDropdown from "@/Components/FormDropdown.vue";
-import contractRoute from "@/routes/contract";
+import type {User} from "@/types/auth/user.ts";
+import type {Role} from "@/types/auth/role.ts";
 
 defineOptions({
     layout: AppLayout

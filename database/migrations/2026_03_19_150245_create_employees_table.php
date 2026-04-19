@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('JMBG');
             $table->string('gender');
             $table->date('started_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

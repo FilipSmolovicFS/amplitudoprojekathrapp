@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import type {Contract, Employee, Paginator} from "@/types/models.ts";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Pagination from "@/Components/Pagination.vue";
 import contractRoute from "@/routes/contract";
@@ -13,7 +12,9 @@ import FormModal from "@/Components/FormModal.vue";
 import FormDropdown from "@/Components/FormDropdown.vue";
 import Input from "@/Components/Input.vue";
 import {Link, useForm} from "@inertiajs/vue3";
-import employee from "@/routes/employee";
+import type {Paginator} from "@/types/common/paginator.ts";
+import type {Employee} from "@/types/employee/employee.ts";
+import type {Contract} from "@/types/contract/contract.ts";
 
 defineOptions({
     layout: AppLayout

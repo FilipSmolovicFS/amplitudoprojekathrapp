@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import type {ContractType, Position, Status} from "@/types/models.ts";
 import DeleteModal from "@/Components/DeleteModal.vue";
 import statusRoutes from '@/routes/status'
 import {ref} from "vue";
 import FormModal from "@/Components/FormModal.vue";
 import {useForm} from "@inertiajs/vue3";
 import Input from "@/Components/Input.vue";
+import type {Status} from "@/types/employee/status.ts";
 
 defineOptions({
     layout: AppLayout

@@ -2,8 +2,8 @@
 
 import Input from "@/Components/Input.vue";
 import FormDropdown from "@/Components/FormDropdown.vue";
-import type {EmployeeForm} from "@/types/models.ts";
 import type {InertiaForm} from "@inertiajs/vue3";
+import type {EmployeeForm} from "@/types/employee/employee-form.ts";
 
 const props = defineProps<{
     title: string,

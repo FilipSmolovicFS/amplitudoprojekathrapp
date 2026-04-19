@@ -94,23 +94,23 @@ onMounted(() => {
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
-            <Card title="Total Employees" :count="props.employeeCount" description="across all departments" route="/employees" icon="👥"/>
-            <Card title="Active Employees" :count="props.activeCount" description="currently on active duty" route="/employees?status=active" icon="✅"/>
-            <Card title="On Leave" :count="props.onLeaveCount" description="approved absences today" route="/employees?status=on_leave" icon="🌴"/>
-            <Card title="Terminated Employees" :count="props.terminatedCount" description="expiring within 30 days" route="/employees?status=terminated" icon="❌"/>
+            <Card title="Total Employees" :count="props.employeeCount" description="across all departments" route="/employee" icon="👥"/>
+            <Card title="Active Employees" :count="props.activeCount" description="currently on active duty" route="/employee?statuses=1" icon="✅"/>
+            <Card title="On Leave" :count="props.onLeaveCount" description="approved absences today" route="/employee?statuses=2" icon="🌴"/>
+            <Card title="Terminated Employees" :count="props.terminatedCount" description="expiring within 30 days" route="/employee?statuses=3" icon="❌"/>
 
         </div>
 
         <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-5">
 
             <div class="bg-white dark:bg-[#18181b] rounded-xl shadow-sm p-6">
-                <h2 class="text-base font-semibold mb-6 text-center">Status Distribution</h2>
+                <h2 class="text-base font-semibold text-heading mb-6 text-center">Status Distribution</h2>
                 <div class="relative h-64">
                     <canvas ref="statusPieRef"></canvas>
                 </div>
             </div>
             <div class="lg:col-span-2 bg-white dark:bg-[#18181b] rounded-xl shadow-sm p-6">
-                <h2 class="text-base font-semibold mb-6">Employees per Position</h2>
+                <h2 class="text-base font-semibold text-heading mb-6">Employees per Position</h2>
                 <div class="relative h-64">
                     <canvas ref="positionBarRef"></canvas>
                 </div>

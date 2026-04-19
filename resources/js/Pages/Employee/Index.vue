@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import employeeRoutes from "@/routes/employee";
-import type {Paginator} from "@/types/models.ts";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {Link, router, useForm} from "@inertiajs/vue3";
 import EmployeeController from "@/actions/App/Http/Controllers/EmployeeController.ts";
@@ -9,6 +8,7 @@ import SearchInput from "@/Components/SearchInput.vue";
 import PerPageSelect from "@/Components/PerPageSelect.vue";
 import Pagination from "@/Components/Pagination.vue";
 import FilterDropdown from "@/Components/FilterDropdown.vue";
+import type {Paginator} from "@/types/common/paginator.ts";
 
 defineOptions({
     layout: AppLayout

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import type {ContractType, Position} from "@/types/models.ts";
 import DeleteModal from "@/Components/DeleteModal.vue";
 import positionRoutes from '@/routes/position'
 import {ref} from "vue";
 import FormModal from "@/Components/FormModal.vue";
 import {useForm} from "@inertiajs/vue3";
 import Input from "@/Components/Input.vue";
+import type {Position} from "@/types/employee/position.ts";
 
 defineOptions({
     layout: AppLayout
