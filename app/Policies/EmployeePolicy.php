@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Employee;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Auth\Access\Response;
 
 class EmployeePolicy
@@ -13,7 +14,7 @@ class EmployeePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 
     /**
@@ -21,7 +22,7 @@ class EmployeePolicy
      */
     public function view(User $user, Employee $employee): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 
     /**
@@ -29,7 +30,7 @@ class EmployeePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 
     /**
@@ -37,7 +38,7 @@ class EmployeePolicy
      */
     public function update(User $user, Employee $employee): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 
     /**
@@ -45,7 +46,7 @@ class EmployeePolicy
      */
     public function delete(User $user, Employee $employee): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 
     /**
@@ -53,7 +54,7 @@ class EmployeePolicy
      */
     public function restore(User $user, Employee $employee): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 
     /**
@@ -61,6 +62,6 @@ class EmployeePolicy
      */
     public function forceDelete(User $user, Employee $employee): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_EMPLOYEES);
     }
 }

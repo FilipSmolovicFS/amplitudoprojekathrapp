@@ -137,7 +137,7 @@
                         <div class="relative rounded-lg border border-gray-200 dark:border-zinc-700/50 bg-gray-50 dark:bg-[#202024] p-5">
 
                             <div class="flex items-center justify-between mb-4 pb-3 border-b border-gray-200 dark:border-zinc-700/50">
-                                <span class="text-sm font-medium text-gray-700 dark:text-zinc-300" x-text="'Contract #' + (index + 1)"></span>
+                                <span class="text-sm font-medium text-gray-700 dark:text-zinc-300" x-text="'ContractType #' + (index + 1)"></span>
 
                                 <template x-if="contracts.length > 1">
                                     <button type="button" @click="removeContract(index)" class="text-sm text-red-500 hover:text-red-600 flex items-center gap-1 transition-colors">

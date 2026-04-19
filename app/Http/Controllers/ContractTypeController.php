@@ -7,6 +7,7 @@ use App\Http\Requests\StoreContractTypeRequest;
 use App\Http\Requests\UpdateContractTypeRequest;
 use App\Service\ContractService;
 use App\Service\ContractTypeService;
+use Inertia\Inertia;
 
 class ContractTypeController extends Controller
 {
@@ -25,7 +26,9 @@ class ContractTypeController extends Controller
     {
         $contractType = $this->contractTypeService->getContractType();
 
-        return view('contract-type.index', compact('contractType'));
+        return Inertia::render('ContractType/Index', [
+            'contractTypes' => $contractType
+        ]);
     }
 
     /**
@@ -46,7 +49,7 @@ class ContractTypeController extends Controller
             return redirect()->back()->with('error', 'Failed to create contract type.');
         }
 
-        return redirect()->back()->with('success', 'Contract type created successfully.');
+        return redirect()->back()->with('success', 'ContractType type created successfully.');
     }
 
     /**
@@ -83,7 +86,7 @@ class ContractTypeController extends Controller
             return redirect()->back()->with('error', 'Failed to delete contract type. It may be associated with existing contracts.');
         }
 
-        return redirect()->back()->with('success', 'Contract type deleted successfully.');
+        return redirect()->back()->with('success', 'ContractType type deleted successfully.');
 
     }
 }

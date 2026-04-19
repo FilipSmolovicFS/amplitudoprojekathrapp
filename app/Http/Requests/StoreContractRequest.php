@@ -27,7 +27,7 @@ class StoreContractRequest extends FormRequest
             'contract_type_id' => 'required|exists:contract_types,id',
             'started_at' => 'required|date',
             'ended_at' => 'required|date|after:started_at',
-            'contracts_document' => 'required|file|mimes:pdf|max:2048',
+            'document' => 'required|file|mimes:pdf|max:2048',
         ];
     }
 }

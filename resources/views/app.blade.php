@@ -6,7 +6,17 @@
     @vite(['resources/css/app.css', 'resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
     @inertiaHead
 </head>
-<body>
+<body class="bg-[#fafafa] dark:bg-[#09090b]" >
 @inertia
 </body>
 </html>
+
+<script>
+
+    const theme = localStorage.getItem('theme')
+    if (theme === 'light'){
+        document.documentElement.classList.remove('dark')
+    }else{
+        document.documentElement.classList.add('dark')
+    }
+</script>

@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\ContractType;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Laravel\Mcp\Enums\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +24,8 @@ class DatabaseSeeder extends Seeder
            EmployeeStatusSeeder::class,
            ContractTypeSeeder::class,
            PositionSeeder::class,
+           PermissionSeeder::class,
+           RoleSeeder::class,
            UserSeeder::class
         ]);
     }

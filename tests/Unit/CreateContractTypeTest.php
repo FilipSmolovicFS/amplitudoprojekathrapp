@@ -2,7 +2,7 @@
 
 use App\Models\ContractType;
 
-test('Test Create Contract Type', function () {
+test('Test Create ContractType Type', function () {
 
     $request = [
         'contractType' => 'Full-time'

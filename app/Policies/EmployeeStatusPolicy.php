@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\EmployeeStatus;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Auth\Access\Response;
 
 class EmployeeStatusPolicy
@@ -13,7 +14,7 @@ class EmployeeStatusPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 
     /**
@@ -21,7 +22,7 @@ class EmployeeStatusPolicy
      */
     public function view(User $user, EmployeeStatus $status): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 
     /**
@@ -29,7 +30,7 @@ class EmployeeStatusPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 
     /**
@@ -37,7 +38,7 @@ class EmployeeStatusPolicy
      */
     public function update(User $user, EmployeeStatus $status): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 
     /**
@@ -45,7 +46,7 @@ class EmployeeStatusPolicy
      */
     public function delete(User $user, EmployeeStatus $status): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 
     /**
@@ -53,7 +54,7 @@ class EmployeeStatusPolicy
      */
     public function restore(User $user, EmployeeStatus $status): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 
     /**
@@ -61,6 +62,6 @@ class EmployeeStatusPolicy
      */
     public function forceDelete(User $user, EmployeeStatus $status): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_STATUS);
     }
 }

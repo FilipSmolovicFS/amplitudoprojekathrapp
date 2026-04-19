@@ -3,7 +3,7 @@
 
 <div class="w-full max-w-xs relative" id="dropdown-root">
 
-    <!-- Trigger Button -->
+    <!-- Trigger Button.vue -->
     <button
         onclick="toggleDropdown()"
         id="trigger-btn"
@@ -16,7 +16,7 @@
             <span class="text-body text-base transition-colors">Filters</span>
         </div>
         <div class="flex items-center gap-2">
-                <span id="count-badge" class="hidden text-2xs tracking-wide px-1.5 py-0.5 font-bold bg-[#e17100B3] text-black dark:text-white rounded-xs"></span>
+            <span id="count-badge" class="hidden text-2xs tracking-wide px-1.5 py-0.5 font-bold bg-[#e17100B3] text-black dark:text-white rounded-xs"></span>
             <svg
                 id="drop-chevron"
                 class="w-3.5 h-3.5 text-[#3F3F46] group-hover:text-[#e17100] transition-all duration-300"

@@ -66,7 +66,7 @@ class ContractController extends Controller
     {
         $this->contractService->updateEmployeeContract($request->validated(), $contract);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Test');
     }
 
     /**

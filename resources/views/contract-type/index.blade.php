@@ -22,36 +22,36 @@
 
         </x-edit-modal>
 
-        <div class="mx-auto max-w-6xl overflow-visible bg-white dark:bg-[#18181b] rounded-sm border border-default mb-8">
-            <table class="w-full  border-[#3F3F46]  text-sm text-left rtl:text-right text-heading">
+    <div class="mx-auto max-w-6xl overflow-visible bg-white dark:bg-[#18181b] rounded-sm border border-default mb-8">
+        <table class="w-full  border-[#3F3F46]  text-sm text-left rtl:text-right text-heading">
 
-                <thead class="text-sm text-heading">
-                <tr class="border-b border-gray-200 dark:border-[#3E3E3A]">
-                    <th scope="col" class="px-6 py-3 font-medium">
-                        Name
-                    </th>
-                    <th scope="col" class="px-6 py-3 font-medium">
-                        Action
-                    </th>
+            <thead class="text-sm text-heading">
+            <tr class="border-b border-gray-200 dark:border-[#3E3E3A]">
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Action
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($contractType as $type)
+
+                <tr class="border-b border-default hover:bg-neutral-secondary-medium rounded-sm">
+
+                    <td scope="row" class="px-6 py-4 rounded-sm font-medium text-heading whitespace-nowrap">
+                        {{$type->name}}
+                    </td>
+                    <td class="px-6 py-4 text-red-600 rounded-sm">
+                        <x-modal title="Delete Contract Type" name="{{$type->name}}" id="{{$type->id}}" route="{{route('contract-type.destroy', $type->id)}}"/>
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                @foreach($contractType as $type)
 
-                    <tr class="border-b border-default hover:bg-neutral-secondary-medium rounded-sm">
-
-                        <td scope="row" class="px-6 py-4 rounded-sm font-medium text-heading whitespace-nowrap">
-                            {{$type->name}}
-                        </td>
-                        <td class="px-6 py-4 text-red-600 rounded-sm">
-                            <x-modal title="Delete Contract Type" name="{{$type->name}}" id="{{$type->id}}" route="{{route('contract-type.destroy', $type->id)}}"/>
-                        </td>
-                    </tr>
-
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
 
 
 

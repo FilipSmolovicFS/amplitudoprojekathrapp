@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\PositionController::index
- * @see app/Http/Controllers/PositionController.php:22
+ * @see app/Http/Controllers/PositionController.php:23
  * @route '/position'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\PositionController::create
- * @see app/Http/Controllers/PositionController.php:32
+ * @see app/Http/Controllers/PositionController.php:35
  * @route '/position/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -157,7 +157,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\PositionController::store
- * @see app/Http/Controllers/PositionController.php:40
+ * @see app/Http/Controllers/PositionController.php:43
  * @route '/position'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -172,7 +172,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::store
- * @see app/Http/Controllers/PositionController.php:40
+ * @see app/Http/Controllers/PositionController.php:43
  * @route '/position'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -181,7 +181,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PositionController::store
- * @see app/Http/Controllers/PositionController.php:40
+ * @see app/Http/Controllers/PositionController.php:43
  * @route '/position'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -191,7 +191,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\PositionController::store
- * @see app/Http/Controllers/PositionController.php:40
+ * @see app/Http/Controllers/PositionController.php:43
  * @route '/position'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -201,7 +201,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\PositionController::store
- * @see app/Http/Controllers/PositionController.php:40
+ * @see app/Http/Controllers/PositionController.php:43
  * @route '/position'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -212,7 +212,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
 export const show = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -227,7 +227,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
 show.url = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -260,7 +260,7 @@ show.url = (args: { position: number | { id: number } } | [position: number | { 
 
 /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
 show.get = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -269,7 +269,7 @@ show.get = (args: { position: number | { id: number } } | [position: number | { 
 })
 /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
 show.head = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -279,7 +279,7 @@ show.head = (args: { position: number | { id: number } } | [position: number | {
 
     /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
     const showForm = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -289,7 +289,7 @@ show.head = (args: { position: number | { id: number } } | [position: number | {
 
             /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
         showForm.get = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -298,7 +298,7 @@ show.head = (args: { position: number | { id: number } } | [position: number | {
         })
             /**
 * @see \App\Http\Controllers\PositionController::show
- * @see app/Http/Controllers/PositionController.php:53
+ * @see app/Http/Controllers/PositionController.php:56
  * @route '/position/{position}'
  */
         showForm.head = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -314,7 +314,7 @@ show.head = (args: { position: number | { id: number } } | [position: number | {
     show.form = showForm
 /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
 export const edit = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -329,7 +329,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
 edit.url = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -362,7 +362,7 @@ edit.url = (args: { position: number | { id: number } } | [position: number | { 
 
 /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
 edit.get = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -371,7 +371,7 @@ edit.get = (args: { position: number | { id: number } } | [position: number | { 
 })
 /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
 edit.head = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -381,7 +381,7 @@ edit.head = (args: { position: number | { id: number } } | [position: number | {
 
     /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
     const editForm = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -391,7 +391,7 @@ edit.head = (args: { position: number | { id: number } } | [position: number | {
 
             /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
         editForm.get = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -400,7 +400,7 @@ edit.head = (args: { position: number | { id: number } } | [position: number | {
         })
             /**
 * @see \App\Http\Controllers\PositionController::edit
- * @see app/Http/Controllers/PositionController.php:61
+ * @see app/Http/Controllers/PositionController.php:64
  * @route '/position/{position}/edit'
  */
         editForm.head = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -416,7 +416,7 @@ edit.head = (args: { position: number | { id: number } } | [position: number | {
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
 export const update = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -431,7 +431,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
 update.url = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -464,7 +464,7 @@ update.url = (args: { position: number | { id: number } } | [position: number | 
 
 /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
 update.put = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -473,7 +473,7 @@ update.put = (args: { position: number | { id: number } } | [position: number | 
 })
 /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
 update.patch = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -483,7 +483,7 @@ update.patch = (args: { position: number | { id: number } } | [position: number 
 
     /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
     const updateForm = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -498,7 +498,7 @@ update.patch = (args: { position: number | { id: number } } | [position: number 
 
             /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
         updateForm.put = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -512,7 +512,7 @@ update.patch = (args: { position: number | { id: number } } | [position: number 
         })
             /**
 * @see \App\Http\Controllers\PositionController::update
- * @see app/Http/Controllers/PositionController.php:69
+ * @see app/Http/Controllers/PositionController.php:72
  * @route '/position/{position}'
  */
         updateForm.patch = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -528,7 +528,7 @@ update.patch = (args: { position: number | { id: number } } | [position: number 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\PositionController::destroy
- * @see app/Http/Controllers/PositionController.php:77
+ * @see app/Http/Controllers/PositionController.php:80
  * @route '/position/{position}'
  */
 export const destroy = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -543,7 +543,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\PositionController::destroy
- * @see app/Http/Controllers/PositionController.php:77
+ * @see app/Http/Controllers/PositionController.php:80
  * @route '/position/{position}'
  */
 destroy.url = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -576,7 +576,7 @@ destroy.url = (args: { position: number | { id: number } } | [position: number |
 
 /**
 * @see \App\Http\Controllers\PositionController::destroy
- * @see app/Http/Controllers/PositionController.php:77
+ * @see app/Http/Controllers/PositionController.php:80
  * @route '/position/{position}'
  */
 destroy.delete = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -586,7 +586,7 @@ destroy.delete = (args: { position: number | { id: number } } | [position: numbe
 
     /**
 * @see \App\Http\Controllers\PositionController::destroy
- * @see app/Http/Controllers/PositionController.php:77
+ * @see app/Http/Controllers/PositionController.php:80
  * @route '/position/{position}'
  */
     const destroyForm = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -601,7 +601,7 @@ destroy.delete = (args: { position: number | { id: number } } | [position: numbe
 
             /**
 * @see \App\Http\Controllers\PositionController::destroy
- * @see app/Http/Controllers/PositionController.php:77
+ * @see app/Http/Controllers/PositionController.php:80
  * @route '/position/{position}'
  */
         destroyForm.delete = (args: { position: number | { id: number } } | [position: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

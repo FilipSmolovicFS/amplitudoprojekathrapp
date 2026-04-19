@@ -1,4 +1,4 @@
-@props(['id' => 'modal', 'title' => 'Modal', 'route', 'method', 'hasFile' => false, 'open' => false])
+@props(['id' => 'modal', 'title' => 'DeleteModal.vue', 'route', 'method', 'hasFile' => false, 'open' => false])
 
 <div x-data="{ open: {{ $open ? 'true' : 'false' }}, fileError: '' }"
      x-on:open-modal.window="if($event.detail === '{{ $id }}') open = true">

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Service\EmployeeService;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class EmployeeController extends Controller
 {
@@ -27,8 +28,11 @@ class EmployeeController extends Controller
 
         $statusesAndPositionsAndContractTypes = $this->employeeService->getStatusesAndPositionsAndContractTypes();
 
-
-        return view('employee.index', compact("employees", "statusesAndPositionsAndContractTypes"));
+        return Inertia::render('Employee/Index',[
+            'employees' => $employees,
+            'statusesAndPositionsAndContractTypes' => $statusesAndPositionsAndContractTypes,
+            'query' => $request->query()
+        ]);
     }
 
     /**
@@ -39,7 +43,7 @@ class EmployeeController extends Controller
 
         $formOptions = $this->employeeService->getFormOptions();
 
-        return view('employee.create', [
+        return Inertia::render('Employee/Create', [
             'contractType' => $formOptions['contractType'],
             'positions' => $formOptions['positions'],
             'employeeStatus' => $formOptions['employeeStatus']
@@ -56,7 +60,7 @@ class EmployeeController extends Controller
             return redirect()->back()->with('error', 'Failed to create employee.');
         }
 
-        return redirect()->route('employee.index')->with('success', 'Employee created successfully.');
+        return redirect()->route('employee.index')->with('success', 'Employee successfully created');
     }
 
     /**
@@ -67,7 +71,11 @@ class EmployeeController extends Controller
         $statusesAndPositionsAndContractTypes = $this->employeeService->getStatusesAndPositionsAndContractTypes();
         $salaryHistory = $this->employeeService->getSalaryHistory($employee);
 
-        return view('employee.show', compact('employee', 'salaryHistory', 'statusesAndPositionsAndContractTypes'));
+        return Inertia::render('Employee/Show', [
+            'employee' => $employee->load('status', 'position', 'salary', 'contract', 'contract.contractType', 'contract.document'),
+            'statusesAndPositionsAndContractTypes' => $statusesAndPositionsAndContractTypes,
+            'salaryHistory' => $salaryHistory
+        ] );
     }
 
     /**
@@ -77,7 +85,9 @@ class EmployeeController extends Controller
     {
         $statusesAndPositionsAndContractTypes = $this->employeeService->getStatusesAndPositionsAndContractTypes();
 
-        return view('employee.edit' , compact('employee', 'statusesAndPositionsAndContractTypes'));
+        return Inertia::render('Employee/Edit', [
+            'employee' => $employee->load('salary', 'contract', 'contract.document', 'contract.contractType'),
+            'statusesAndPositionsAndContractTypes' => $statusesAndPositionsAndContractTypes]);
     }
 
     /**
@@ -97,6 +107,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
+
         if (!$this->employeeService->deleteEmployee($employee)){
             return redirect()->back()->with('error', 'Failed to delete employee.');
         }

@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Contract;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Auth\Access\Response;
 
 class ContractPolicy
@@ -13,7 +14,7 @@ class ContractPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 
     /**
@@ -21,7 +22,7 @@ class ContractPolicy
      */
     public function view(User $user, Contract $contract): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 
     /**
@@ -29,7 +30,7 @@ class ContractPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 
     /**
@@ -37,7 +38,7 @@ class ContractPolicy
      */
     public function update(User $user, Contract $contract): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 
     /**
@@ -45,7 +46,7 @@ class ContractPolicy
      */
     public function delete(User $user, Contract $contract): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 
     /**
@@ -53,7 +54,7 @@ class ContractPolicy
      */
     public function restore(User $user, Contract $contract): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 
     /**
@@ -61,6 +62,6 @@ class ContractPolicy
      */
     public function forceDelete(User $user, Contract $contract): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Position;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Auth\Access\Response;
 
 class PositionPolicy
@@ -13,7 +14,7 @@ class PositionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 
     /**
@@ -21,7 +22,7 @@ class PositionPolicy
      */
     public function view(User $user, Position $position): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 
     /**
@@ -29,7 +30,7 @@ class PositionPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 
     /**
@@ -37,7 +38,7 @@ class PositionPolicy
      */
     public function update(User $user, Position $position): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 
     /**
@@ -45,7 +46,7 @@ class PositionPolicy
      */
     public function delete(User $user, Position $position): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 
     /**
@@ -53,7 +54,7 @@ class PositionPolicy
      */
     public function restore(User $user, Position $position): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 
     /**
@@ -61,6 +62,6 @@ class PositionPolicy
      */
     public function forceDelete(User $user, Position $position): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_POSITION);
     }
 }

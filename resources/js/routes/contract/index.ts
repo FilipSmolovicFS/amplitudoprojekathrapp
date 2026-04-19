@@ -1,5 +1,102 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+export const download = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: download.url(args, options),
+    method: 'get',
+})
+
+download.definition = {
+    methods: ["get","head"],
+    url: '/contract-type/{document}/download',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+download.url = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { document: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    document: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        document: args.document,
+                }
+
+    return download.definition.url
+            .replace('{document}', parsedArgs.document.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+download.get = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: download.url(args, options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+download.head = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: download.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+    const downloadForm = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: download.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+        downloadForm.get = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: download.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\ContractController::download
+ * @see app/Http/Controllers/ContractController.php:82
+ * @route '/contract-type/{document}/download'
+ */
+        downloadForm.head = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: download.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    download.form = downloadForm
+/**
 * @see \App\Http\Controllers\ContractController::index
  * @see app/Http/Controllers/ContractController.php:23
  * @route '/contract'
@@ -615,112 +712,15 @@ destroy.delete = (args: { contract: number | { id: number } } | [contract: numbe
         })
     
     destroy.form = destroyForm
-/**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-export const download = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: download.url(args, options),
-    method: 'get',
-})
-
-download.definition = {
-    methods: ["get","head"],
-    url: '/contract-type/{document}/download',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-download.url = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions) => {
-    if (typeof args === 'string' || typeof args === 'number') {
-        args = { document: args }
-    }
-
-    
-    if (Array.isArray(args)) {
-        args = {
-                    document: args[0],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        document: args.document,
-                }
-
-    return download.definition.url
-            .replace('{document}', parsedArgs.document.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-download.get = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: download.url(args, options),
-    method: 'get',
-})
-/**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-download.head = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: download.url(args, options),
-    method: 'head',
-})
-
-    /**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-    const downloadForm = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: download.url(args, options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-        downloadForm.get = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: download.url(args, options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\ContractController::download
- * @see app/Http/Controllers/ContractController.php:82
- * @route '/contract-type/{document}/download'
- */
-        downloadForm.head = (args: { document: string | number } | [document: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: download.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    download.form = downloadForm
 const contract = {
-    index: Object.assign(index, index),
+    download: Object.assign(download, download),
+index: Object.assign(index, index),
 create: Object.assign(create, create),
 store: Object.assign(store, store),
 show: Object.assign(show, show),
 edit: Object.assign(edit, edit),
 update: Object.assign(update, update),
 destroy: Object.assign(destroy, destroy),
-download: Object.assign(download, download),
 }
 
 export default contract

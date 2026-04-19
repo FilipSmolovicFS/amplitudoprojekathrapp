@@ -87,7 +87,7 @@
                      <td class="px-6 py-4">
                          {{$employee->position->name}}
                      </td>
-                     <td class="px-6 py-4 max-w-[160px]">
+                     <td class="px-6 py-4 max-w-40">
                          @foreach($employee->contract->unique('contract_type_id') as $contract)
                              @if($contract->contractType)
                                  <span class="inline-block items-center px-3 py-1 bg-indigo-50 dark:bg-[#18181b] text-heading mb-1 text-xs font-semibold rounded-lg border border-[#3F3F46]">

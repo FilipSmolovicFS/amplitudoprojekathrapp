@@ -6,6 +6,7 @@ use App\Models\EmployeeStatus;
 use App\Http\Requests\StoreEmployeeStatusRequest;
 use App\Http\Requests\UpdateEmployeeStatusRequest;
 use App\Service\EmployeeStatusService;
+use Inertia\Inertia;
 
 class EmployeeStatusController extends Controller
 {
@@ -21,7 +22,9 @@ class EmployeeStatusController extends Controller
     public function index()
     {
         $employeeStatuses = $this->employeeStatusService->index();
-        return view('status.index', compact('employeeStatuses'));
+        return Inertia::render('Status/Index', [
+            'statuses' => $employeeStatuses
+        ]);
     }
 
     /**

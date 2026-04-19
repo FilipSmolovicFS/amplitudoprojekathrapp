@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Salary;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Auth\Access\Response;
 
 class SalaryPolicy
@@ -13,7 +14,7 @@ class SalaryPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 
     /**
@@ -21,7 +22,7 @@ class SalaryPolicy
      */
     public function view(User $user, Salary $salary): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 
     /**
@@ -29,7 +30,7 @@ class SalaryPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 
     /**
@@ -37,7 +38,7 @@ class SalaryPolicy
      */
     public function update(User $user, Salary $salary): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 
     /**
@@ -45,7 +46,7 @@ class SalaryPolicy
      */
     public function delete(User $user, Salary $salary): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 
     /**
@@ -53,7 +54,7 @@ class SalaryPolicy
      */
     public function restore(User $user, Salary $salary): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 
     /**
@@ -61,6 +62,6 @@ class SalaryPolicy
      */
     public function forceDelete(User $user, Salary $salary): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_SALARY);
     }
 }

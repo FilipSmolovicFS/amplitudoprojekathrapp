@@ -177,8 +177,9 @@ Each closure runs in a separate process with full Laravel access. Use for indepe
 Follow Laravel conventions. Don't override defaults unnecessarily.
 
 Incorrect:
+
 ```php
-class Customer extends Model
+use App\Models\Role;class Customer extends Model
 {
     protected $table = 'Customer';
     protected $primaryKey = 'customer_id';
@@ -191,8 +192,9 @@ class Customer extends Model
 ```
 
 Correct:
+
 ```php
-class Customer extends Model
+use App\Models\Role;class Customer extends Model
 {
     public function roles(): BelongsToMany
     {

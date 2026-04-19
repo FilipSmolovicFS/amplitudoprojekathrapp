@@ -5,6 +5,12 @@ import employee from "@/routes/employee/index.ts";
 import position from "@/routes/position/index.ts";
 import contractType from "@/routes/contract-type/index.ts";
 import status from "@/routes/status/index.ts";
+import {login, logout} from "@/routes";
+import FlashToast from "@/Components/FlashToast.vue";
+import {Link, usePage} from "@inertiajs/vue3";
+import {computed} from "vue";
+import user from "@/routes/user";
+import logs from "@/routes/logs";
 
 
 function isActiveRoute(currentUrl: string, prefix: string){
@@ -19,9 +25,24 @@ function setActiveClass(prefix: string): string{
         : 'text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-400/10'
 }
 
+function toggleTheme(): void {
+    document.documentElement.classList.toggle('dark');
+    if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+const page = usePage()
+
+const can = computed(() => page.props.auth.can)
+
 </script>
 
 <template>
+
+    <FlashToast />
 
     <div class="bg-[#fafafa] dark:bg-[#09090b]">
 
@@ -43,7 +64,7 @@ function setActiveClass(prefix: string): string{
                     <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 mb-2">General</p>
 
                     <li>
-                        <a :href="dashboard.index.url()"
+                        <Link :href="dashboard.index.url()"
                            class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
                            :class="setActiveClass('/dashboard')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -53,11 +74,11 @@ function setActiveClass(prefix: string): string{
                                 <rect x="3" y="14" width="7" height="7"/>
                             </svg>
                             <span class="ms-3">Dashboard</span>
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a :href="employee.index.url()"
+                        <Link :href="employee.index.url()"
                            class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
                         :class="setActiveClass('/employee')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,11 +86,11 @@ function setActiveClass(prefix: string): string{
                                 <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                             </svg>
                             <span class="ms-3">Employees</span>
-                        </a>
+                        </Link>
                     </li>
 
-                    <li>
-                        <a :href="position.index.url()"
+                    <li v-if="can.managePosition">
+                        <Link :href="position.index.url()"
                            class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
                            :class="setActiveClass('/position')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -78,11 +99,11 @@ function setActiveClass(prefix: string): string{
                                 <path d="M15 8h2"/><path d="M15 12h2"/><path d="M7 16h4"/>
                             </svg>
                             <span class="flex-1 ms-3">Positions</span>
-                        </a>
+                        </Link>
                     </li>
 
-                    <li>
-                        <a :href="contractType.index.url()"
+                    <li v-if="can.manageContractType">
+                        <Link :href="contractType.index.url()"
                            class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
                            :class="setActiveClass('/contract-type')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -93,39 +114,69 @@ function setActiveClass(prefix: string): string{
                                 <line x1="10" y1="9" x2="8" y2="9"/>
                             </svg>
                             <span class="flex-1 ms-3">Contract Types</span>
-                        </a>
+                        </Link>
                     </li>
 
-                    <li>
-                        <a :href="status.index.url()"
+                    <li v-if="can.manageStatus">
+                        <Link :href="status.index.url()"
                            class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
                            :class="setActiveClass('/status')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                             </svg>
                             <span class="flex-1 ms-3">Status</span>
-                        </a>
+                        </Link>
+                    </li>
+
+                    <li v-if="can.viewLogs">
+                        <Link :href="logs.index.url()"
+                              class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
+                              :class="setActiveClass('/logs')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v5h5"/>
+                                <path d="M3.05 13a9 9 0 1 0 .5-5"/>
+                                <path d="M12 7v5l3 3"/>
+                            </svg>
+                            <span class="flex-1 ms-3">Logs</span>
+                        </Link>
+                    </li>
+
+                    <li v-if="can.manageUsers">
+                        <Link :href="user.index.url()"
+                              class="flex items-center px-3 py-2.5 rounded-sm transition-all duration-200 group"
+                              :class="setActiveClass('/user')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M7 21v-2a4 4 0 0 1 3-3.87"/>
+                                <circle cx="12" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M2 21v-2a4 4 0 0 1 3-3.87"/>
+                            </svg>
+                            <span class="flex-1 ms-3">Users</span>
+                        </Link>
                     </li>
                 </ul>
 
-                <button id="theme-toggle" class="px-4 py-2 rounded-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 transition-colors">
+                <button id="theme-toggle" @click="toggleTheme" class="px-4 py-2 rounded-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 transition-colors">
                     Switch Theme
                 </button>
 
                 <div class="pt-4 mt-4 border-t border-gray-50">
-                    <form method="POST" action="{{ route('logout') }}" id="logout-form">
-                        @csrf
-                    </form>
-                    <button type="button" onclick="document.getElementById('logout-form').submit()" class="flex items-center w-full px-3 py-2.5 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all group">
+
+                    <Link type="button" method="post" :href="logout.url()" class="flex items-center w-full px-3 py-2.5 text-slate-500 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all group">
                         <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                         <span class="ms-3">Logout</span>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </aside>
 
 
-        <div class="mt-8 sm:ml-64">
+        <div class="mt-8 sm:ml-64 bg-[#fafafa] dark:bg-[#09090b]">
             <slot/>
         </div>
 

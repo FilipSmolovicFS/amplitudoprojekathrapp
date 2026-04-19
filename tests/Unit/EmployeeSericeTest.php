@@ -4,7 +4,7 @@ use App\Models\EmployeeStatus;
 use App\Models\Position;
 use App\Models\ContractType;
 
-test('Test Get Statuses, Positions and Contract Types', function () {
+test('Test Get Statuses, Positions and ContractType Types', function () {
 
     // --- EmployeeStatus mock ---
     $statusPluckMock = Mockery::mock();

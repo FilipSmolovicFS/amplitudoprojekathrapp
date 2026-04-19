@@ -6,6 +6,7 @@ use App\Models\Position;
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Requests\UpdatePositionRequest;
 use App\Service\PositionService;
+use Inertia\Inertia;
 
 class PositionController extends Controller
 {
@@ -23,7 +24,9 @@ class PositionController extends Controller
     {
         $positions = $this->positionService->index();
 
-        return view('position.index', compact('positions'));
+        return Inertia::render('Position/Index', [
+            'positions' => $positions
+        ]);
     }
 
     /**

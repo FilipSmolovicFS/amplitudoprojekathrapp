@@ -21,20 +21,20 @@ class ContractService
 
     public function updateEmployeeContract(array $data, Contract $contract)
     {
-        if (isset($data['contract-document'])) {
+        if (isset($data['document'])) {
             if ($contract->document) {
                 Storage::delete($contract->document->file_path);
                 $contract->document()->delete();
             }
 
-            $path = $data['contract-document']->store('contract-type', 'public');
+            $path = $data['document']->store('contract-type', 'public');
 
             $contract->document()->create([
-                'file_name' => $data['contract-document']->getClientOriginalName(),
+                'file_name' => $data['document']->getClientOriginalName(),
                 'file_path' => $path,
             ]);
         }
-        $contract->update(collect($data)->except('contract-document')->toArray());
+        $contract->update(collect($data)->except('document')->toArray());
     }
 
     public function createNewContract(array $contractData)
@@ -48,7 +48,7 @@ class ContractService
             'ended_at' => $contractData['ended_at']
         ]);
 
-        $file = $contractData['contracts_document'];
+        $file = $contractData['document'];
         $name = $file->getClientOriginalName();
         $fileName = time() . '_' . $name;
 

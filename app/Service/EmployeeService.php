@@ -14,9 +14,7 @@ class EmployeeService
 
     public function getEmployees(array $request)
     {
-
-
-        $query = Employee::query()->with(['status', 'contract', 'contract.document', 'position']);
+        $query = Employee::query()->with(['status', 'contract', 'contract.contractType','contract.document', 'position']);
 
         $query->when($request['statuses'] ?? null, function($query, $status){
             return $query->whereIn('employees.status_id', (array) $status);
@@ -71,7 +69,7 @@ class EmployeeService
 
         $perPage = empty($request['per_page']) ? 10 : $request['per_page'];
 
-        return $query->paginate($perPage);
+        return $query->paginate($perPage)->withQueryString();
     }
 
 
@@ -94,6 +92,7 @@ class EmployeeService
 
     public function createNewEmployee(array $newEmployeeData): bool
     {
+
         return DB::transaction(function () use ($newEmployeeData) {
             try {
                 $newEmployee = Employee::query()->create([
@@ -107,11 +106,16 @@ class EmployeeService
                     'date_of_birth' => $newEmployeeData['date_of_birth'],
                     'jmbg' => $newEmployeeData['jmbg'],
                     'address' => $newEmployeeData['address'],
-                    'gender' => $newEmployeeData['gender'] === 1 ? 'Male' : 'Female'
+                    'gender' => $newEmployeeData['gender']
                 ]);
 
                 $newEmployee->salary()->create([
                     'current_amount' => $newEmployeeData['salary']
+                ]);
+
+
+                $newEmployee->salary->salaryHistory()->create([
+                    'amount' => $newEmployeeData['salary']
                 ]);
 
                 foreach ($newEmployeeData['contracts'] as $contractData) {

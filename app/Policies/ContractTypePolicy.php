@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\ContractType;
 use App\Models\User;
+use App\Permissions\Permissions;
 use Illuminate\Auth\Access\Response;
 
 class ContractTypePolicy
@@ -13,7 +14,7 @@ class ContractTypePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 
     /**
@@ -21,7 +22,7 @@ class ContractTypePolicy
      */
     public function view(User $user, ContractType $contractType): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 
     /**
@@ -29,7 +30,7 @@ class ContractTypePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 
     /**
@@ -37,7 +38,7 @@ class ContractTypePolicy
      */
     public function update(User $user, ContractType $contractType): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 
     /**
@@ -45,7 +46,7 @@ class ContractTypePolicy
      */
     public function delete(User $user, ContractType $contractType): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 
     /**
@@ -53,7 +54,7 @@ class ContractTypePolicy
      */
     public function restore(User $user, ContractType $contractType): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 
     /**
@@ -61,6 +62,6 @@ class ContractTypePolicy
      */
     public function forceDelete(User $user, ContractType $contractType): bool
     {
-        return false;
+        return $user->can(Permissions::MANAGE_CONTRACT_TYPE);
     }
 }
