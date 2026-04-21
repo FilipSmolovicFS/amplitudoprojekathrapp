@@ -73,7 +73,7 @@ const isAddUserModalVisible = ref(false)
                 class="inline-flex items-center justify-center w-40 py-3 cursor-pointer bg-indigo-500
                 dark:bg-[#e17100] text-white dark:text-black text-sm font-medium rounded-sm
                 transition hover:bg-indigo-600">
-                Add new contract type
+                Add new user
             </span>
     </div>
 
